@@ -8,7 +8,7 @@ This a project we are making for our second year Web and Database moudle.
  - **Aaron Tierney**
  - **Lini brennan** 
  - **Ethan Payne**
-    **Rachel O'Shea**
+ - **Rachel O'Shea**
    
 
 
