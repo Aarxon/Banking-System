@@ -1,0 +1,187 @@
+/*
+Project: Real Bank
+Description: Unified CSS styling for forms
+Date: 9 February 2026
+*/
+
+/* Currency input */
+
+/*
+:first-child and :first-of-type. Are selectors that let ypu pick out the fisrt child object, 
+or the first child of each new type. eg div, p, h2.
+*/
+
+/* The sidenav */
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Page content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+}
+
+
+
+body
+{
+	margin:0px;
+	background-color: blue;
+	/* Set font */
+	
+}
+
+.displaySelected
+{
+ 	background-color: lightblue;
+	flex: 60%;
+	padding: 10px;
+	/*height: 300px; demonstration of height*/
+}
+/* 
+h3:first-child /* applies to the first child H3 element 
+{ 
+	margin-top: 0; 
+}
+
+h3 
+{ 
+	margin-top: 10px; margin-bottom: 2px; 
+} 
+*/
+/* 
+form 
+{
+	margin:auto;
+	width:auto;
+	height:auto;
+	border: 3px solid navy;
+	padding:20px;
+} */
+
+form h2
+{
+	text-align: left; /* put in the vertical middle of the form */
+	color: navy;
+
+}
+
+
+/*
+.radiobox, .dropdown, .checkbox1
+{
+	padding:20px; // add space around other form elements 
+
+}
+
+.range1
+{
+	margin:12px;
+	accent-color:blue; // Change color of the slider 
+}
+.dropdown input
+{
+	// Allow scroll on small screens 
+	overflow:auto;
+}
+*/
+
+/* code snip */
+label 
+{
+	display: inline-block;
+	margin-bottom: 5px;
+	
+}
+
+.form-row 
+{
+  	display: flex;
+	flex-direction: row;
+}
+
+.form-group 
+{
+	padding: 5px;
+	width: 50%;
+}
+
+.form-group input 
+{
+  	 /* width: 100%;  */
+	/* dimensions of the input boxes */
+	width: 150px;
+	height:20px;
+}
+
+/* end of code snip */
+
+.inputbox
+{
+
+	/* Adds vertical space between the inputboxes, but too much like padding:20px would have */
+	margin: 12px; 
+}
+
+.inputbox input
+{
+	/* puts the boxes inline, so horizontal rather than vertical. Also respects their height and width. Insertable blocks.*/
+	display: inline-block; /* allow setting a height/width and also respect top and bottom margins/padding */
+
+	/* dimensions of the input boxes */
+	width: 150px;
+	height:20px;
+}
+
+
+.inputbox label
+{
+	/* display: inline-block; */
+	display: block; 	/* Put label above the input box */
+
+    /* affects distance between the label and the input box. */
+	width: 120px;
+
+
+}
+
+/* The div that holds both buttons */
+.myButton
+{
+	text-align: center; /* put in the vertical middle of the form */
+	padding:20px; /* spacing from other elements */ 
+
+}
+
+.myButton input
+{
+	height:40px; /* How tall button is */
+
+	/* Adding space between the buttons without chinging vertical margins */
+	margin-left: 10px;
+	margin-right: 10px;
+
+	/* Color effects and font size for buttons */
+	background-color: aliceblue;
+	color: navy;
+	font-size: 15px;
+	border:1px navy solid;
+	
+}
+
+/* Applies to inputs that are valid */
+input:valid 
+{
+  	border: 2px solid green;
+}
+
+
+
