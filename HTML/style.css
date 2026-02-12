@@ -9,16 +9,10 @@
 .navbar a {
     text-decoration: none;
     color: white;
-    height: 40px;
 } 
 
 /* navbar hover style */
 .navbar a:hover {
-    color: rgb(224, 181, 143);
-}
-
-/* Show active link in navbar */
-.navbar a.active {
     color: rgb(224, 181, 143);
 }
 
@@ -64,6 +58,16 @@ body {
     width: 160px;
 }
 
+/* Show active link in navbar */
+a.topActive {
+    color: rgb(224, 181, 143);
+    
+}
+
+.dropbutton.topActive {
+    background-color: rgb(17, 34, 80);
+}
+
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
     background-color: rgb(17, 34, 80);
@@ -82,7 +86,7 @@ body {
 /* Sidebar style */
 .sidebar {
     height: 100%;
-    width: 170px;
+    width: 250px;
     background-color: rgb(17, 34, 80);
     display: flex;
     flex-direction: column;
@@ -90,11 +94,11 @@ body {
 
 /* sidebar links style */
 .sidebar a {
-    padding: 10px 20px;
+    padding: 10px 40px;
     text-decoration: none;
     color: white;
     height: 60px;
-    font-size: 16px;
+    font-size: 18px;
 } 
 
 /* sidebar hover style */
@@ -106,4 +110,22 @@ body {
 /* Show active link in sidebar */
 .sidebar a.active {
     color: rgb(224, 181, 143);
+}
+
+h1 {
+    color: white;
+    font-size: 22px;
+    padding: 20px 40px;
+    border-bottom: 2px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-color: white;
+    border-style: solid;
+}
+
+.logo {
+    padding-right: 170px;
+    width: 80px;
+    height: 80px;
 }
