@@ -129,3 +129,106 @@ h1 {
     width: 80px;
     height: 80px;
 }
+
+.container {
+    display: flex;
+    /* calc is used to mitigate the 80px height of the nav bar to prevent unneccesary scroll bars */
+    height: calc(100% - 80px);
+}
+
+.displaySelected
+{
+	padding: 10px;
+}
+
+form h2
+{
+	text-align: left; /* put in the vertical middle of the form */
+	color: navy;
+
+}
+
+/* code snip */
+label 
+{
+	display: block;
+	margin-bottom: 5px;	
+}
+
+.form-row 
+{
+  	display: flex;
+	flex-direction: row;
+}
+
+.form-group 
+{
+	padding: 5px;
+    font-size: 22px;
+}
+
+.form-group input 
+{
+  	width: 500px;
+    height: 50px;
+}
+
+/* end of code snip */
+
+.inputbox
+{
+	/* Adds vertical space between the inputboxes, but too much like padding:20px would have */
+	margin: 12px; 
+}
+
+.inputbox input
+{
+	/* puts the boxes inline, so horizontal rather than vertical. Also respects their height and width. Insertable blocks.*/
+	display: inline-block; /* allow setting a height/width and also respect top and bottom margins/padding */
+
+	/* dimensions of the input boxes */
+	width: 150px;
+	height:20px;
+}
+
+
+.inputbox label
+{
+	/* display: inline-block; */
+	display: block; 	/* Put label above the input box */
+
+    /* affects distance between the label and the input box. */
+	width: 120px;
+
+
+}
+
+/* The div that holds both buttons */
+.myButton
+{
+	text-align: center; /* put in the vertical middle of the form */
+	padding:20px; /* spacing from other elements */ 
+
+}
+
+.myButton input
+{
+	height:40px; /* How tall button is */
+
+	/* Adding space between the buttons without changing vertical margins */
+	margin-left: 10px;
+	margin-right: 10px;
+
+	/* Color effects and font size for buttons */
+	background-color: aliceblue;
+	color: navy;
+	font-size: 15px;
+	border:1px navy solid;
+	
+}
+
+/* Applies to inputs that are valid */
+input:valid 
+{
+  	border: 2px solid green;
+}
