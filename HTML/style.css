@@ -9,16 +9,10 @@
 .navbar a {
     text-decoration: none;
     color: white;
-    height: 40px;
 } 
 
 /* navbar hover style */
 .navbar a:hover {
-    color: rgb(224, 181, 143);
-}
-
-/* Show active link in navbar */
-.navbar a.active {
     color: rgb(224, 181, 143);
 }
 
@@ -64,6 +58,16 @@ body {
     width: 160px;
 }
 
+/* Show active link in navbar */
+a.topActive {
+    color: rgb(224, 181, 143);
+    
+}
+
+.dropbutton.topActive {
+    background-color: rgb(17, 34, 80);
+}
+
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
     background-color: rgb(17, 34, 80);
@@ -82,7 +86,7 @@ body {
 /* Sidebar style */
 .sidebar {
     height: 100%;
-    width: 170px;
+    width: 250px;
     background-color: rgb(17, 34, 80);
     display: flex;
     flex-direction: column;
@@ -90,11 +94,11 @@ body {
 
 /* sidebar links style */
 .sidebar a {
-    padding: 10px 20px;
+    padding: 10px 40px;
     text-decoration: none;
     color: white;
     height: 60px;
-    font-size: 16px;
+    font-size: 18px;
 } 
 
 /* sidebar hover style */
@@ -106,4 +110,125 @@ body {
 /* Show active link in sidebar */
 .sidebar a.active {
     color: rgb(224, 181, 143);
+}
+
+h1 {
+    color: white;
+    font-size: 22px;
+    padding: 20px 40px;
+    border-bottom: 2px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-color: white;
+    border-style: solid;
+}
+
+.logo {
+    padding-right: 170px;
+    width: 80px;
+    height: 80px;
+}
+
+.container {
+    display: flex;
+    /* calc is used to mitigate the 80px height of the nav bar to prevent unneccesary scroll bars */
+    height: calc(100% - 80px);
+}
+
+.displaySelected
+{
+	padding: 10px;
+}
+
+form h2
+{
+	text-align: left; /* put in the vertical middle of the form */
+	color: navy;
+
+}
+
+/* code snip */
+label 
+{
+	display: block;
+	margin-bottom: 5px;	
+}
+
+.form-row 
+{
+  	display: flex;
+	flex-direction: row;
+}
+
+.form-group 
+{
+	padding: 5px;
+    font-size: 22px;
+}
+
+.form-group input 
+{
+  	width: 500px;
+    height: 50px;
+}
+
+/* end of code snip */
+
+.inputbox
+{
+	/* Adds vertical space between the inputboxes, but too much like padding:20px would have */
+	margin: 12px; 
+}
+
+.inputbox input
+{
+	/* puts the boxes inline, so horizontal rather than vertical. Also respects their height and width. Insertable blocks.*/
+	display: inline-block; /* allow setting a height/width and also respect top and bottom margins/padding */
+
+	/* dimensions of the input boxes */
+	width: 150px;
+	height:20px;
+}
+
+
+.inputbox label
+{
+	/* display: inline-block; */
+	display: block; 	/* Put label above the input box */
+
+    /* affects distance between the label and the input box. */
+	width: 120px;
+
+
+}
+
+/* The div that holds both buttons */
+.myButton
+{
+	text-align: center; /* put in the vertical middle of the form */
+	padding:20px; /* spacing from other elements */ 
+
+}
+
+.myButton input
+{
+	height:40px; /* How tall button is */
+
+	/* Adding space between the buttons without changing vertical margins */
+	margin-left: 10px;
+	margin-right: 10px;
+
+	/* Color effects and font size for buttons */
+	background-color: aliceblue;
+	color: navy;
+	font-size: 15px;
+	border:1px navy solid;
+	
+}
+
+/* Applies to inputs that are valid */
+input:valid 
+{
+  	border: 2px solid green;
 }
