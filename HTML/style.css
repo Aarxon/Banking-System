@@ -232,3 +232,20 @@ input:valid
 {
   	border: 2px solid green;
 }
+
+/* Styling for under construction signage */
+.underconstruction
+{
+    position: absolute;
+    height: fit-content;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: rgb(17, 34, 80);
+}
