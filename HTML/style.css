@@ -233,10 +233,19 @@ input:valid
   	border: 2px solid green;
 }
 
-.selectbox
+/* Styling for under construction signage */
+.underconstruction
 {
-    /* dimensions of the select boxes */
-	width: 500px;
-    height: 50px;
-    font-size: 22px;
+    position: absolute;
+    height: fit-content;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: rgb(17, 34, 80);
 }
