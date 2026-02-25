@@ -1,7 +1,8 @@
 <html>
     <head>
         <link rel="stylesheet" href="style.css">
-        <title>Home</title>
+        <script src="openLoanAccountJS.js"></script>
+        <title>Loan Account</title>
     </head>
 
     <body>
@@ -42,79 +43,71 @@
             </div>
 
             <div class="displaySelected">
-            <form action="loanAccountInsert.php" method="POST">
-            <h2>Create Account</h2>
-            <?php
-                include "dbcon.php";  // Database connection
-                
-                $sql = "SELECT customer_id, name, surname FROM customers";
+            <form action="loanAccountInsert.php" method="POST" onsubmit="confirmCheck()">
+                <h2>Create Account</h2>
 
-                if(!$result = mysqli_query($con, $sql))
-                {
-                    die("Error in querying the database " . mysqli_error($con));
-                }
+                <input type="button" value="2 Customers" id="multipleCustomers" onclick="toggleSelect()" class="customerButton">
 
-                echo "<div class='form-row'>";
-                echo "<div class='form-group'>";
-                echo "<label for='customer1'>Customer 1</label>";
-                echo "<select name='customer1' id='customer1' class='selectbox'>";
+                <div class='form-row'>
+                    <div class='form-group'>
+                    <label for='customer1'>Customer 1</label>
+                    <select name='customer1' id='customer1' class='selectbox'>
+                        <?php
+                            include "dbcon.php";  // Database connection
+                            
+                            $sql = "SELECT customer_id, name, surname FROM customers";
 
-                while($row = mysqli_fetch_array($result))
-                {
-                    $id = $row['customer_id'];
-                    $name = $row['name'];
-                    $surname = $row['surname'];
-                    echo "<option value='$id'>$id, $name $surname</option>";
-                }
-                echo "</select>";
-                echo "</div>";
+                            if(!$result = mysqli_query($con, $sql))
+                            {
+                                die("Error in querying the database " . mysqli_error($con));
+                            }
 
-                echo "<div class='form-group'>";
-                echo "<label for='customer2'>Customer 2</label>";
-                echo "<select name='customer2' id='customer2' class='selectbox'>";
+                            while($row = mysqli_fetch_array($result))
+                            {
+                                $id = $row['customer_id'];
+                                $name = $row['name'];
+                                $surname = $row['surname'];
+                                echo "<option value='$id'>$id, $name $surname</option>";
+                            }
+                        ?>
+                    </select>
+                    </div>
 
-                mysqli_data_seek($result, 0);   // Reset the result pointer to iterate from the top of the database again
-                while($row = mysqli_fetch_array($result))
-                {
-                    $id = $row['customer_id'];
-                    $name = $row['name'];
-                    $surname = $row['surname'];
-                    echo "<option value='$id'>$id, $name $surname</option>";
-                }
-                echo "</select>";
-                echo "</div>";
-                echo "</div>";
-                mysqli_close($con);
-            ?>
-
-            <br>
-            <h2>Account Details</h2>
-            <div class="form-row">
-                <div class="form-group">
-                <label for="balance">Balance On Loan</label>
-                <input id="balance" type="text">
+                    <div class='form-group'>
+                    <label for='customer2' class="hideText">Customer 2</label>
+                    <select name='customer2' id='customer2' class='selectbox' hidden onclick="confirmDifferentCustomer()">
+                        <?php
+                            mysqli_data_seek($result, 0);   // Reset the result pointer to iterate from the top of the database again
+                            while($row = mysqli_fetch_array($result))
+                            {
+                                $id = $row['customer_id'];
+                                $name = $row['name'];
+                                $surname = $row['surname'];
+                                echo "<option value='$id'>$id, $name $surname</option>";
+                            }
+                            mysqli_close($con);
+                        ?>
+                    </select>
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-row">
-                <div class="form-group">
-                <label for="amount">Loan Amount</label>
-                <input id="amount" type="text">
+                <br><!-- Details to enter for the loan account -->
+                <h2>Account Details</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                    <label for="balance">Balance On Loan</label>
+                    <input name="balance" type="number" required title="Please enter the initial balance"/>
+                    </div>
                 </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                <label for="term">Term Length</label>
-                <input id="term" type="text">
+                <div class="form-row">
+                    <div class="form-group">
+                    <label for="term">Term Length</label>
+                    <input name="term" type="number" required title="Please enter the term length in months minimum length is 24 months and maximum is 120 months" max="120" min="24"/>
+                    </div>
                 </div>
-                <div class="form-group">
-                <label for="repayments">Monthly Repayments</label>
-                <input id="repayments" type="text">
+                <div class="form-row">
+                    <input type="submit" value="Submit" class="myButton">
                 </div>
-            </div>
-            <div class="form-row">
-                <input type="submit" value="Submit" class="myButton">
-            </div>
             </form>
             </div>
         </div>
