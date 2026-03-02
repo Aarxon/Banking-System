@@ -1,3 +1,9 @@
+// Ethan Payne
+// C00309151
+// JavaScript file for opening a loan account
+// This validates details, toggles the select box for customer 2
+// and prompts the user to confirm wether the form should or shouldnt be submitted 
+
 function toggleSelect()
     {
         let element = document.getElementById("customer2");
@@ -45,7 +51,11 @@ function confirmCheck()
         }
         else
         {
-            
+            // Clear the inputs id the form submission was cancelled
+            document.getElementById("customer1").value = "1";
+            document.getElementById("customer2").value = "";
+            document.getElementById("balance").value = "0";
+            document.getElementById("term").value = "0";
             return false;
         }
     }
@@ -55,12 +65,14 @@ function confirmDifferentCustomer()
         const customer2 = document.getElementById("customer2").value;
 
         if (customer1 === customer2) {
+            // Error message for if the customers are the same
             alert("Please select a different customer for Customer 2.");
             document.getElementById("customer2").value = "0"; // Reset the second dropdown to default
             return false;
         }
         else
         {
+            // Clear the error message
             return true;
         }
     }
