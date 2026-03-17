@@ -1,5 +1,5 @@
 # 🏦 Banking System
-This a project we are making for our second year Web and Database moudle.
+This a project we are making for our second year Web and Database module.
 
 ---  
 
