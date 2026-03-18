@@ -7,11 +7,6 @@
 function toggleSelect()
 {
     let element = document.getElementById("customer2");
-    // This is used to get the hideText class from the style sheet
-    let element2 = document.querySelector(".hideText");
-    let element3 = document.getElementById("customer2input");
-    // This is used to get the hideText class from the style sheet
-    let element4 = document.querySelector(".hideText cust2");
 
     if (document.getElementById("multipleCustomers").value == "2 Customers") 
     {
@@ -19,10 +14,13 @@ function toggleSelect()
         // Reveal the second dropdown menu 
         // Set the button to show the value 1 Customer 
         element.removeAttribute("hidden");
-        element3.removeAttribute("hidden");
         document.getElementById("multipleCustomers").value = "1 Customer";
         // Style sheet change .hideText to visible
-        element2.style.visibility = "visible";
+        // Im using a query selector to select all elements with the class hideText and set their visibility to visible
+        for (const element2 of document.querySelectorAll('.hideText')) 
+        {
+            element2.style.visibility = "visible";
+        }
     } 
     else 
     {
@@ -31,11 +29,13 @@ function toggleSelect()
         // Set the button to show the value 2 Customers 
         element.value = ""; // Clear the value
         element.setAttribute("hidden", "hidden");
-        element3.value = ""; // Clear the value
-        element3.setAttribute("hidden", "hidden");
         document.getElementById("multipleCustomers").value = "2 Customers";
         // Style sheet change .hideText to hidden
-        element2.style.visibility = "hidden";
+        // Im using a query selector to select all elements with the class hideText and set their visibility to hidden
+        for (const element2 of document.querySelectorAll('.hideText')) 
+        {
+            element2.style.visibility = "hidden";
+        }
     }
 }
 function confirmCheck()
@@ -147,4 +147,13 @@ function populate()
     document.getElementById("amountpaid").value = loanAccountDetails[8].trim();
     document.getElementById("term").value = loanAccountDetails[9].trim();
     document.getElementById("monthlyrepayments").value = loanAccountDetails[10].trim();
+}
+
+function toggleCustomerInfo()
+{
+    let element = document.getElementById("customer1");
+    let element2 = document.getElementById("customer2");
+
+    document.getElementById("customerInfo1").innerHTML = element.value;
+    document.getElementById("customerInfo2").innerHTML = element2.value;
 }

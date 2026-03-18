@@ -47,59 +47,80 @@
             <form action="loanAccountInsert.php" method="POST" onsubmit="return confirmCheck()">
                 <h2>Open Loan Account</h2>
 
+                <!-- Switch to toggle between search options -->
+                <div class="search">
+                    <label for="customerSearch">Search by Name</label>
+                    <label class="searchSwitch">
+                        <input type="checkbox" id="customerSearch">
+                        <span class="searchSlider"></span>
+                    </label>
+                    <label for="customerSearch">Search by ID</label>         <!-- 'this' refers to the element that triggered the event -->
+                </div>
+
                 <input type="button" value="2 Customers" id="multipleCustomers" name="multipleCustomers" onclick="toggleSelect()" class="customerButton">
 
-                <div class='form-row'>
+                <?php
+                    include "dbcon.php";  // Database connection
+                    
+                    echo "<div class='form-row'>
                     <div class='form-group'>
                     <label for='customer1'>Customer 1</label>
-                    <select name='customer1' id='customer1' class='selectbox'>
-                        <?php
-                            include "dbcon.php";  // Database connection
-                            
-                            $sql = "SELECT customer_id, name, surname FROM customers";
+                    <select name='customer1' id='customer1' class='selectbox' onchange='toggleCustomerInfo()' >";
 
-                            if(!$result = mysqli_query($con, $sql))
-                            {
-                                die("Error in querying the database " . mysqli_error($con));
-                            }
+                    $sql = "SELECT * FROM customers";
 
-                            while($row = mysqli_fetch_array($result))
-                            {
-                                $id = $row['customer_id'];
-                                $name = $row['name'];
-                                $surname = $row['surname'];
-                                echo "<option value='$id'>$id, $name $surname</option>";
-                            }
-                        ?>
-                    </select>
+                    if(!$result = mysqli_query($con, $sql))
+                    {
+                        die("Error in querying the database " . mysqli_error($con));
+                    }
+
+                    while($row = mysqli_fetch_array($result))
+                    {
+                        $id = $row['customer_id'];
+                        $name = $row['name'];
+                        $surname = $row['surname'];
+                        $address = $row['address'];
+                        $eircode = $row['eircode'];
+                        $DOB = $row['date_of_birth'];
+                        $email = $row['email'];
+                        $phone_number = $row['phone_number'];
+                        $occupation = $row['occupation'];
+                        $salary = $row['salary'];
+                        $allText = "ID: $id<br>Name: $name $surname<br>Address: $address<br>Eircode: $eircode<br>Date of Birth: $DOB<br>Email: $email<br>Phone Number: $phone_number<br>Occupation: $occupation<br>Salary: $salary";
+                        echo "<option value='$allText'>$id, $name $surname</option>";
+                    }
+                
+                    echo "</select>
+                    <p id='customerInfo1'></p>
                     </div>
-
+                    
                     <div class='form-group'>
-                    <label for='customer2' class="hideText">Customer 2</label>
-                    <select name='customer2' id='customer2' class='selectbox' hidden onclick="confirmDifferentCustomer()">
-                        <?php
-                            mysqli_data_seek($result, 0);   // Reset the result pointer to iterate from the top of the database again
-                            while($row = mysqli_fetch_array($result))
-                            {
-                                $id = $row['customer_id'];
-                                $name = $row['name'];
-                                $surname = $row['surname'];
-                                echo "<option value='$id'>$id, $name $surname</option>";
-                            }
-                            mysqli_close($con);
-                        ?>
-                    </select>
+                    <label for='customer2' class='hideText'>Customer 2</label>
+                    <select name='customer2' id='customer2' class='selectbox' hidden onclick='confirmDifferentCustomer()'>";
+                
+                    mysqli_data_seek($result, 0);   // Reset the result pointer to iterate from the top of the database again
+                    while($row = mysqli_fetch_array($result))
+                    {
+                        $id = $row['customer_id'];
+                        $name = $row['name'];
+                        $surname = $row['surname'];
+                        $address = $row['address'];
+                        $eircode = $row['eircode'];
+                        $DOB = $row['date_of_birth'];
+                        $email = $row['email'];
+                        $phone_number = $row['phone_number'];
+                        $occupation = $row['occupation'];
+                        $salary = $row['salary'];
+                        $allText = "ID: $id<br>Name: $name $surname<br>Address: $address<br>Eircode: $eircode<br>Date of Birth: $DOB<br>Email: $email<br>Phone Number: $phone_number<br>Occupation: $occupation<br>Salary: $salary";
+                        echo "<option value='$allText'>$id, $name $surname</option>";
+                    }
+                
+                    echo "</select>
+                    <p class='hideText' id='customerInfo2'></p>
                     </div>
-                </div>
-                <div class='form-row'>
-                    <div class='form-group'>
-                    <input type='number' name='customer1input' id='customer1input'>
-                    </div>
-
-                    <div class='form-group'>
-                    <input type='number' name='customer2input' id='customer2input' hidden onclick="confirmDifferentCustomer()">
-                    </div>
-                </div>
+                    </div>";
+                    mysqli_close($con);
+                ?>
 
                 <br><!-- Details to enter for the loan account -->
                 <h2>Account Details</h2>
