@@ -1,7 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="style.css">
-        <script src="openLoanAccountJS.js"></script>
+        <script src="LoanAccountJS.js"></script>
         <title>Loan Account</title>
     </head>
 
@@ -37,16 +37,17 @@
         </div>
         <div class="container">
             <div class="sidebar">
-            <a href="openLoanAccount.html">Add Loan Account</a>
-            <a href="#">Delete Customer</a>
-            <a href="#">Update Customer Details</a>
+                <h1>Customer Menu</h1>
+                <a href="openLoanAccount.html.php">Add Loan Account</a>
+                <a href="#">Delete Customer</a>
+                <a href="ammendViewLoanAccount.html.php">Update Customer Details</a>
             </div>
 
             <div class="displaySelected">
-            <form action="loanAccountInsert.php" method="POST" onsubmit="confirmCheck()">
-                <h2>Create Account</h2>
+            <form action="loanAccountInsert.php" method="POST" onsubmit="return confirmCheck()">
+                <h2>Open Loan Account</h2>
 
-                <input type="button" value="2 Customers" id="multipleCustomers" onclick="toggleSelect()" class="customerButton">
+                <input type="button" value="2 Customers" id="multipleCustomers" name="multipleCustomers" onclick="toggleSelect()" class="customerButton">
 
                 <div class='form-row'>
                     <div class='form-group'>
@@ -90,23 +91,37 @@
                     </select>
                     </div>
                 </div>
+                <div class='form-row'>
+                    <div class='form-group'>
+                    <input type='number' name='customer1input' id='customer1input'>
+                    </div>
+
+                    <div class='form-group'>
+                    <input type='number' name='customer2input' id='customer2input' hidden onclick="confirmDifferentCustomer()">
+                    </div>
+                </div>
 
                 <br><!-- Details to enter for the loan account -->
                 <h2>Account Details</h2>
                 <div class="form-row">
                     <div class="form-group">
                     <label for="balance">Balance On Loan</label>
-                    <input name="balance" type="number" required title="Please enter the initial balance"/>
+                    <input name="balance" id="balance" type="number" required title="Please enter the initial balance minimum 5000 euros" min="5000"/>
+                    </div>
+                    <div class="form-group">
+                    <label for="firstdeposit">First Deposit</label>
+                    <input name="firstdeposit" id="firstdeposit" type="number" required title="minimum 500 euro initial payment" min="500"/>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
                     <label for="term">Term Length</label>
-                    <input name="term" type="number" required title="Please enter the term length in months minimum length is 24 months and maximum is 120 months" max="120" min="24"/>
+                    <input name="term" id="term" type="number" required title="Please enter the term length in months minimum length is 24 months and maximum is 120 months" max="120" min="24"/>
                     </div>
                 </div>
                 <div class="form-row">
                     <input type="submit" value="Submit" class="myButton">
+                    <input type="reset" value="Clear" class="myButton">
                 </div>
             </form>
             </div>

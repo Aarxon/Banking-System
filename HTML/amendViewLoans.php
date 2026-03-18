@@ -100,9 +100,9 @@
 
 
 <!-- A form to return to the insert page -->
-<form action="openLoanAccount.html.php" method="POST">
+<form action="amendViewLoanAccount.html.php" method="POST">
     <br>
     <div class="form-row">
-        <input type="submit" value="Return to Insert Page"/>
+        <input type="submit" value="Return to Previous Page"/>
     </div>
 </form>
