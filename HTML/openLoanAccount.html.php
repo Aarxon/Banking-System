@@ -63,7 +63,11 @@
                     <div class='form-group'>
                     <label for='customer1'>Customer 1</label>
                     <select name='customer1' id='customer1' class='selectbox' onchange='toggleCustomerInfo()'>";
+<<<<<<< HEAD
                     echo "<option value=''>-- Select Customer 1 --</option>";
+=======
+                    echo "<option value='0'>-- Select Customer 1 --</option>";
+>>>>>>> refs/remotes/origin/main
 
                     while($row = mysqli_fetch_array($result))
                     {
@@ -95,7 +99,11 @@
                     <div class='form-group'>
                     <label for='customer2' class='hideText'>Customer 2</label>
                     <select name='customer2' id='customer2' class='selectbox' hidden onchange='toggleCustomerInfo()'>";
+<<<<<<< HEAD
                     echo "<option value=''>-- Select Customer 2 --</option>";
+=======
+                    echo "<option value='0'>-- Select Customer 2 --</option>";
+>>>>>>> refs/remotes/origin/main
                 
                     mysqli_data_seek($result, 0);   // Reset the result pointer to iterate from the top of the database again
                     while($row = mysqli_fetch_array($result))
