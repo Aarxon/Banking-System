@@ -58,9 +58,23 @@
                             
                             $sql = "SELECT account.account_id, customer_id_1, customer_id_2, 
                             c1.name AS customer_1_name, 
-                            c1.surname AS customer_1_surname, 
+														c1.surname AS customer_1_surname,
+														c1.address AS customer_1_address,
+														c1.eircode AS customer_1_eircode,
+														c1.date_of_birth AS customer_1_dob,
+														c1.email AS customer_1_email,
+														c1.phone_number AS customer_1_phone,
+														c1.occupation AS customer_1_occupation,
+														c1.salary AS customer_1_salary,	
                             c2.name AS customer_2_name, 
                             c2.surname AS customer_2_surname,
+														c2.address AS customer_2_address,
+														c2.eircode AS customer_2_eircode,
+														c2.date_of_birth AS customer_2_dob,
+														c2.email AS customer_2_email,
+														c2.phone_number AS customer_2_phone,
+														c2.occupation AS customer_2_occupation,
+														c2.salary AS customer_2_salary,	
                             loan_balance, term, loan_amount, monthly_repayments
                             FROM account 
                             INNER JOIN customers c1 ON account.customer_id_1 = c1.customer_id 
@@ -79,9 +93,23 @@
                                 $customer1id = $row['customer_id_1'];
                                 $customer1name = $row['customer_1_name'];
                                 $customer1surname = $row['customer_1_surname'];
+                                $customer1address = $row['customer_1_address'];
+                                $customer1eircode = $row['customer_1_eircode'];
+                                $customer1dob = $row['customer_1_dob'];
+                                $customer1email = $row['customer_1_email'];
+                                $customer1phone = $row['customer_1_phone'];
+                                $customer1occupation = $row['customer_1_occupation'];
+                                $customer1salary = $row['customer_1_salary'];
                                 $customer2id = $row['customer_id_2'];
                                 $customer2name = $row['customer_2_name'];
                                 $customer2surname = $row['customer_2_surname'];
+                                $customer2address = $row['customer_2_address'];
+                                $customer2eircode = $row['customer_2_eircode'];
+                                $customer2dob = $row['customer_2_dob'];
+                                $customer2email = $row['customer_2_email'];
+                                $customer2phone = $row['customer_2_phone'];
+                                $customer2occupation = $row['customer_2_occupation'];
+                                $customer2salary = $row['customer_2_salary'];
                                 $loan_balance = $row['loan_balance'];
                                 $term = $row['term'];
                                 $loan_amount = $row['loan_amount'];
@@ -89,11 +117,21 @@
 
                                 if ($customer2id == null) {
                                     $customer2id = "N/A";
-                                    $customer2name = "N/A";
-                                    $customer2surname = "N/A";
+                                    $customer2name = "";
+																		$customer2surname = "";
+																		$customer2address = "";
+																		$customer2eircode = "";
+																		$customer2dob = "";
+																		$customer2email = "";
+																		$customer2phone = "";
+																		$customer2occupation = "";
+																		$customer2salary = "";
                                 }
                                 
-                                $allText = "$id, $customer1id, $customer1name, $customer1surname, $customer2id, $customer2name, $customer2surname, $loan_balance, $term, $loan_amount, $monthly_repayments";
+																$allText = "$id, 
+																$customer1id, $customer1name, $customer1surname, $customer1address, $customer1eircode, $customer1dob, $customer1email, $customer1phone, $customer1occupation, $customer1salary,
+																$customer2id, $customer2name, $customer2surname, $customer2address, $customer2eircode, $customer2dob, $customer2email, $customer2phone, $customer2occupation, $customer2salary,
+																$loan_balance, $term, $loan_amount, $monthly_repayments";
                                 echo "<option value='$allText'>$id</option>";
                             }
                         ?>
@@ -106,11 +144,11 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="customer1">Customer 1</label>
-                        <input name='customer1' id='customer1' type='text' disabled/>   
+                        <input name='customer1' id='customer1' type='text' class="bigTextArea" disabled/>   
                     </div>
                     <div class="form-group">
                         <label for="customer2">Customer 2</label>
-                        <input name='customer2' id='customer2' type='text' disabled/>
+                        <input name='customer2' id='customer2' type='text' class="bigTextArea" disabled/>
                     </div>
                 </div>
 

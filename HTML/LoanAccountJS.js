@@ -1,6 +1,7 @@
 // Ethan Payne
 // C00309151
-// JavaScript file for opening a loan account
+// JavaScript file for loan accounts
+
 // This validates details, toggles the select box for customer 2
 // and prompts the user to confirm wether the form should or shouldnt be submitted 
 
@@ -137,19 +138,26 @@ function populate()
     var result;
     result = sel.options[sel.selectedIndex].value;
     var loanAccountDetails = result.split(',');
-    document.getElementById("customer1").value = loanAccountDetails[1].trim() + ", " + loanAccountDetails[2].trim() + " " + loanAccountDetails[3].trim();
-    if (loanAccountDetails[4].trim() == "N/A") 
+    document.getElementById("customer1").value = loanAccountDetails[1].trim() + ", " + loanAccountDetails[2].trim() + " " + loanAccountDetails[3].trim() + "\n" +
+																								loanAccountDetails[4].trim() + "\n" + loanAccountDetails[5].trim() + "\n" + loanAccountDetails[6].trim() + "\n" + 
+																								loanAccountDetails[7].trim() + "\n" + loanAccountDetails[8].trim() + "\n" + loanAccountDetails[9].trim() + "\n" +
+																								loanAccountDetails[10].trim();
+    if (loanAccountDetails[11].trim() == "N/A") 
     {
-        document.getElementById("customer2").value = loanAccountDetails[4].trim();
+        document.getElementById("customer2").value = loanAccountDetails[11].trim();
     }
     else
     {
-        document.getElementById("customer2").value = loanAccountDetails[4].trim() + ", " + loanAccountDetails[5].trim() + " " + loanAccountDetails[6].trim();
+        document.getElementById("customer2").value = loanAccountDetails[11].trim() + ", " + loanAccountDetails[12].trim() + " " + loanAccountDetails[13].trim() + "\n" +
+																								loanAccountDetails[14].trim() + "\n" + loanAccountDetails[15].trim() + "\n" + loanAccountDetails[16].trim() + "\n" + 
+																								loanAccountDetails[17].trim() + "\n" + loanAccountDetails[18].trim() + "\n" + loanAccountDetails[19].trim() + "\n" +	
+																								loanAccountDetails[20].trim();
+
     }
-    document.getElementById("balance").value = loanAccountDetails[7].trim();
-    document.getElementById("amountpaid").value = loanAccountDetails[8].trim();
-    document.getElementById("term").value = loanAccountDetails[9].trim();
-    document.getElementById("monthlyrepayments").value = loanAccountDetails[10].trim();
+    document.getElementById("balance").value = loanAccountDetails[21].trim();
+    document.getElementById("amountpaid").value = loanAccountDetails[22].trim();
+    document.getElementById("term").value = loanAccountDetails[23].trim();
+    document.getElementById("monthlyrepayments").value = loanAccountDetails[24].trim();
 }
 
 function toggleCustomerInfo()
