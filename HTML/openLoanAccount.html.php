@@ -52,7 +52,7 @@
                 <?php
                     include "dbcon.php";  // Database connection
 
-                    $sql = "SELECT * FROM customers";
+                    $sql = "SELECT * FROM customers WHERE deleted_flag=0";
 
                     if(!$result = mysqli_query($con, $sql))
                     {
@@ -62,12 +62,8 @@
                     echo "<div class='form-row'>
                     <div class='form-group'>
                     <label for='customer1'>Customer 1</label>
-                    <select name='customer1' id='customer1' class='selectbox' onchange='toggleCustomerInfo()'>";
-<<<<<<< HEAD
-                    echo "<option value=''>-- Select Customer 1 --</option>";
-=======
-                    echo "<option value='0'>-- Select Customer 1 --</option>";
->>>>>>> refs/remotes/origin/main
+                    <select name='customer1' id='customer1' class='selectbox' onchange='toggleCustomerInfo()' value='' required>";
+                    echo "<option hidden value=''>-- Select Customer 1 --</option>";
 
                     while($row = mysqli_fetch_array($result))
                     {
@@ -82,28 +78,18 @@
                         $occupation = $row['occupation'];
                         $salary = $row['salary'];
                         $customer1Info = "ID: $id<br>Name: $name $surname<br>Address: $address<br>Eircode: $eircode<br>Date of Birth: $DOB<br>Email: $email<br>Phone Number: $phone_number<br>Occupation: $occupation<br>Salary: $salary";
-                        echo "<option value='$id'>$id, $name $surname</option>";
+                        echo "<option value='$id' data-info='$customer1Info'>$id, $name $surname</option>";
                     }
                 
                     echo "</select>";
-                    $sql = "SELECT * FROM customers";
 
-                    if(!$result = mysqli_query($con, $sql))
-                    {
-                        die("Error in querying the database " . mysqli_error($con));
-                    }
-
-                    echo "<p id='customerInfo1'></p>
+                    echo "<p id='customerInfo1' class='customerInfo'></p>
                     </div>
                     
                     <div class='form-group'>
                     <label for='customer2' class='hideText'>Customer 2</label>
-                    <select name='customer2' id='customer2' class='selectbox' hidden onchange='toggleCustomerInfo()'>";
-<<<<<<< HEAD
-                    echo "<option value=''>-- Select Customer 2 --</option>";
-=======
-                    echo "<option value='0'>-- Select Customer 2 --</option>";
->>>>>>> refs/remotes/origin/main
+                    <select name='customer2' id='customer2' class='selectbox' hidden onchange='toggleCustomerInfo()' value=''>";
+                    echo "<option hidden value=''>-- Select Customer 2 --</option>";
                 
                     mysqli_data_seek($result, 0);   // Reset the result pointer to iterate from the top of the database again
                     while($row = mysqli_fetch_array($result))
@@ -119,11 +105,11 @@
                         $occupation = $row['occupation'];
                         $salary = $row['salary'];
                         $customer2Info = "ID: $id<br>Name: $name $surname<br>Address: $address<br>Eircode: $eircode<br>Date of Birth: $DOB<br>Email: $email<br>Phone Number: $phone_number<br>Occupation: $occupation<br>Salary: $salary";
-                        echo "<option value='$id'>$id, $name $surname</option>";
+                        echo "<option value='$id' data-info='$customer2Info'>$id, $name $surname</option>";
                     }
                 
                     echo "</select>
-                    <p class='hideText' id='customerInfo2'></p>
+                    <p class='hideText customerInfo' id='customerInfo2'></p>
                     </div>
                     </div>";
     
@@ -132,6 +118,23 @@
 
                 <br><!-- Details to enter for the loan account -->
                 <h2>Account Details</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <?php
+                            include "dbcon.php";
+                            $sql = "SELECT MAX(account_id) + 1 FROM account";
+
+                            if(!$result = mysqli_query($con, $sql))
+                            {
+                                die("Error in querying the database " . mysqli_error($con));
+                            }
+                            $id = mysqli_fetch_array($result);
+
+                            echo "<label for='accountID'>Account ID</label>
+                                <input type='text' name='accountID' id='accountID' disabled value=$id[0]>";
+                        ?> 
+                    </div>
+                </div>
                 <div class="form-row">
                     <div class="form-group">
                     <label for="balance">Balance On Loan</label>
@@ -149,7 +152,7 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <input type="submit" value="Submit" class="myButton" onclick='confirmDifferentCustomer()'>
+                    <input type="submit" value="Submit" class="myButton">
                     <input type="reset" value="Clear" class="myButton">
                 </div>
             </form>

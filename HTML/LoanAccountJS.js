@@ -30,6 +30,7 @@ function toggleSelect()
         element.value = ""; // Clear the value
         element.setAttribute("hidden", "hidden");
         document.getElementById("multipleCustomers").value = "2 Customers";
+        document.getElementById("customerInfo2").innerHTML = "";
         // Style sheet change .hideText to hidden
         // Im using a query selector to select all elements with the class hideText and set their visibility to hidden
         for (const element2 of document.querySelectorAll('.hideText')) 
@@ -40,6 +41,7 @@ function toggleSelect()
 }
 function confirmCheck()
 {
+    confirmDifferentCustomer();
     // Give a pop up notification that asks you to confirm the changes you are trying to make after pressing the save changes button
     var response;
     response = confirm("Are you sure you want to add this to the database?");
@@ -152,6 +154,21 @@ function populate()
 
 function toggleCustomerInfo()
 {
-    document.getElementById("customerInfo1").innerHTML = customer1;
-    document.getElementById("customerInfo2").innerHTML = customer2;
+    // Use of AI in this section to display populated data in the p field
+    const select1 = document.getElementById('customer1');
+    const select2 = document.getElementById('customer2');
+    const info1 = document.getElementById('customerInfo1');
+    const info2 = document.getElementById('customerInfo2');
+
+    const selectedOption1 = select1.options[select1.selectedIndex];
+    if (selectedOption1 && selectedOption1.value !== '') 
+    {
+        info1.innerHTML = selectedOption1.getAttribute('data-info');
+    }
+
+    const selectedOption2 = select2.options[select2.selectedIndex];
+    if (selectedOption2 && selectedOption2.value !== '') 
+    {
+        info2.innerHTML = selectedOption2.getAttribute('data-info');
+    }
 }

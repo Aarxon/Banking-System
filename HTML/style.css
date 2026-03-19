@@ -170,6 +170,7 @@ label
 {
   	width: 500px;
     height: 50px;
+    font-size: 20px;
 }
 
 .customerButton
@@ -224,67 +225,10 @@ label
     color: rgb(17, 34, 80);
 }
 
-/* Displaying text on either side of toggle switch */
-.search
+.customerInfo
 {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-/* The switch */
-.searchSwitch
-{
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-}
-
-/* Hide the default HTML check box */
-.searchSwitch input
-{
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-/* The slider */
-.searchSlider
-{
-    position: absolute;
-    border-radius: 34px;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgb(217, 203, 194);               /* Shellstone */
-    transition: .4s;                                      /* Controls length of animation */           
-}
-
-.searchSlider:before
-{
-    position: absolute;
-    content: "";                                          /* Won't show circle without this, flags that there's an element here */
-    border-radius: 50%;
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: rgb(245, 240, 233);               /* Swan wing*/
-    transition: .4s;                                      /* Controls length of animation */ 
-}
-
-input:checked + .searchSlider 
-{
-    background-color: rgb(48, 80, 112) ;                /* Sapphire */
-}
-
-input:focus + .searchSlider
-{
-    box-shadow: 0 0 1px rgb(48, 80, 112);
-}
-
-input:checked + .searchSlider:before
-{
-    transform: translateX(26px);
+    background-color: white;
+    border: 2px black solid;
+    border-radius: 5px;
+    padding: 5px;
 }
