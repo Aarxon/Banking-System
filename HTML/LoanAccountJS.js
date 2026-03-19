@@ -68,7 +68,8 @@ function confirmDifferentCustomer()
     if (customer1 === customer2) {
         // Error message for if the customers are the same
         alert("Please select a different customer for Customer 2.");
-        document.getElementById("customer2").value = "0"; // Reset the second dropdown to default
+        document.getElementById("customer2").value = ""; // Reset the second dropdown to default
+        document.getElementById("customerInfo2").innerHTML = ""; // Clear the customer info for customer 2
         return false;
     }
     else
@@ -151,9 +152,6 @@ function populate()
 
 function toggleCustomerInfo()
 {
-    let element = document.getElementById("customer1");
-    let element2 = document.getElementById("customer2");
-
-    document.getElementById("customerInfo1").innerHTML = element.value;
-    document.getElementById("customerInfo2").innerHTML = element2.value;
+    document.getElementById("customerInfo1").innerHTML = customer1;
+    document.getElementById("customerInfo2").innerHTML = customer2;
 }

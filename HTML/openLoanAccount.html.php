@@ -46,26 +46,11 @@
             <div class="displaySelected">
             <form action="loanAccountInsert.php" method="POST" onsubmit="return confirmCheck()">
                 <h2>Open Loan Account</h2>
-
-                <!-- Switch to toggle between search options -->
-                <div class="search">
-                    <label for="customerSearch">Search by Name</label>
-                    <label class="searchSwitch">
-                        <input type="checkbox" id="customerSearch">
-                        <span class="searchSlider"></span>
-                    </label>
-                    <label for="customerSearch">Search by ID</label>         <!-- 'this' refers to the element that triggered the event -->
-                </div>
-
+                
                 <input type="button" value="2 Customers" id="multipleCustomers" name="multipleCustomers" onclick="toggleSelect()" class="customerButton">
 
                 <?php
                     include "dbcon.php";  // Database connection
-                    
-                    echo "<div class='form-row'>
-                    <div class='form-group'>
-                    <label for='customer1'>Customer 1</label>
-                    <select name='customer1' id='customer1' class='selectbox' onchange='toggleCustomerInfo()' >";
 
                     $sql = "SELECT * FROM customers";
 
@@ -73,6 +58,12 @@
                     {
                         die("Error in querying the database " . mysqli_error($con));
                     }
+
+                    echo "<div class='form-row'>
+                    <div class='form-group'>
+                    <label for='customer1'>Customer 1</label>
+                    <select name='customer1' id='customer1' class='selectbox' onchange='toggleCustomerInfo()'>";
+                    echo "<option value=''>-- Select Customer 1 --</option>";
 
                     while($row = mysqli_fetch_array($result))
                     {
@@ -86,17 +77,25 @@
                         $phone_number = $row['phone_number'];
                         $occupation = $row['occupation'];
                         $salary = $row['salary'];
-                        $allText = "ID: $id<br>Name: $name $surname<br>Address: $address<br>Eircode: $eircode<br>Date of Birth: $DOB<br>Email: $email<br>Phone Number: $phone_number<br>Occupation: $occupation<br>Salary: $salary";
-                        echo "<option value='$allText'>$id, $name $surname</option>";
+                        $customer1Info = "ID: $id<br>Name: $name $surname<br>Address: $address<br>Eircode: $eircode<br>Date of Birth: $DOB<br>Email: $email<br>Phone Number: $phone_number<br>Occupation: $occupation<br>Salary: $salary";
+                        echo "<option value='$id'>$id, $name $surname</option>";
                     }
                 
-                    echo "</select>
-                    <p id='customerInfo1'></p>
+                    echo "</select>";
+                    $sql = "SELECT * FROM customers";
+
+                    if(!$result = mysqli_query($con, $sql))
+                    {
+                        die("Error in querying the database " . mysqli_error($con));
+                    }
+
+                    echo "<p id='customerInfo1'></p>
                     </div>
                     
                     <div class='form-group'>
                     <label for='customer2' class='hideText'>Customer 2</label>
-                    <select name='customer2' id='customer2' class='selectbox' hidden onclick='confirmDifferentCustomer()'>";
+                    <select name='customer2' id='customer2' class='selectbox' hidden onchange='toggleCustomerInfo()'>";
+                    echo "<option value=''>-- Select Customer 2 --</option>";
                 
                     mysqli_data_seek($result, 0);   // Reset the result pointer to iterate from the top of the database again
                     while($row = mysqli_fetch_array($result))
@@ -111,14 +110,15 @@
                         $phone_number = $row['phone_number'];
                         $occupation = $row['occupation'];
                         $salary = $row['salary'];
-                        $allText = "ID: $id<br>Name: $name $surname<br>Address: $address<br>Eircode: $eircode<br>Date of Birth: $DOB<br>Email: $email<br>Phone Number: $phone_number<br>Occupation: $occupation<br>Salary: $salary";
-                        echo "<option value='$allText'>$id, $name $surname</option>";
+                        $customer2Info = "ID: $id<br>Name: $name $surname<br>Address: $address<br>Eircode: $eircode<br>Date of Birth: $DOB<br>Email: $email<br>Phone Number: $phone_number<br>Occupation: $occupation<br>Salary: $salary";
+                        echo "<option value='$id'>$id, $name $surname</option>";
                     }
                 
                     echo "</select>
                     <p class='hideText' id='customerInfo2'></p>
                     </div>
                     </div>";
+    
                     mysqli_close($con);
                 ?>
 
@@ -141,7 +141,7 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <input type="submit" value="Submit" class="myButton">
+                    <input type="submit" value="Submit" class="myButton" onclick='confirmDifferentCustomer()'>
                     <input type="reset" value="Clear" class="myButton">
                 </div>
             </form>
