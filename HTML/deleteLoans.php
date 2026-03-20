@@ -47,18 +47,25 @@
             <?php
                 include "dbcon.php";
 
-                $sql = "UPDATE loan_account SET loan_balance = '$_POST[balance]', term = '$_POST[term]', loan_amount = '$_POST[amountpaid]', monthly_repayments = '$_POST[monthlyrepayments]' WHERE account_id = '$_POST[accountid]'";
+                $sql = "UPDATE loan_account SET deleted_flag = 1 WHERE account_id = '$_POST[accountid]'";
 
                 if(!mysqli_query($con, $sql))
                 {
                     die("An Error in the SQL Query: " . mysqli_error($con));   
                 }
 
-                echo "Account has been changed!";
+                $sql = "UPDATE account SET deleted_flag = 1 WHERE account_id = '$_POST[accountid]'";
+
+                if(!mysqli_query($con, $sql))
+                {
+                    die("An Error in the SQL Query: " . mysqli_error($con));   
+                }
+
+                echo "Account has been Deleted!";
             ?>
 
-            <!-- A form to return to the amend/view page -->
-            <form action="amendViewLoanAccount.html.php" method="POST">
+            <!-- A form to return to the delete page -->
+            <form action="deleteLoanAccount.html.php" method="POST">
                 <br>
                 <div class="form-row">
                     <input type="submit" value="Return to Previous Page"/>

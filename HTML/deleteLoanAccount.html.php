@@ -44,10 +44,8 @@
             </div>
 
             <div class="displaySelected">
-            <form action="amendViewLoans.php" method="POST" onsubmit="return confirmCheckAmend()">
-                <h2>Create Account</h2>
-
-                <input type="button" value="Amend Account" id="amendViewbutton" name="amendViewbutton" onclick="toggleLock()" class="customerButton">
+            <form action="deleteLoans.php" method="POST" onsubmit="return confirmCheckDelete()">
+                <h2>Delete Account</h2>
 
                 <div class='form-row'>
                     <div class='form-group'>
@@ -175,7 +173,7 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                    <input type="submit" value="Submit" class="myButton">
+                    <input type="submit" value="Delete Account" class="myButton">
                     </div>
                 </div>
             </form>

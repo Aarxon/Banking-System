@@ -113,11 +113,7 @@ function confirmCheckAmend()
 
     if (response)
     {
-        // If the amendViewbutton is pushed and the value is set to Amend Details
         // Unlock the textboxes so that the values can be changed 
-        // Set the button to show the value View Details 
-        document.getElementById("customer1").disabled = false;
-        document.getElementById("customer2").disabled = false;
         document.getElementById("balance").disabled = false;
         document.getElementById("amountpaid").disabled = false;
         document.getElementById("term").disabled = false;
@@ -138,26 +134,27 @@ function populate()
     var result;
     result = sel.options[sel.selectedIndex].value;
     var loanAccountDetails = result.split(',');
-    document.getElementById("customer1").value = loanAccountDetails[1].trim() + ", " + loanAccountDetails[2].trim() + " " + loanAccountDetails[3].trim() + "\n" +
-																								loanAccountDetails[4].trim() + "\n" + loanAccountDetails[5].trim() + "\n" + loanAccountDetails[6].trim() + "\n" + 
-																								loanAccountDetails[7].trim() + "\n" + loanAccountDetails[8].trim() + "\n" + loanAccountDetails[9].trim() + "\n" +
-																								loanAccountDetails[10].trim();
+    document.getElementById("customer1").textContent = loanAccountDetails[1].trim() + ", " + loanAccountDetails[2].trim() + " " + loanAccountDetails[3].trim() + "\n" +
+                                                loanAccountDetails[4].trim() + "\n" + loanAccountDetails[5].trim() + "\n" + loanAccountDetails[6].trim() + "\n" + 
+                                                loanAccountDetails[7].trim() + "\n" + loanAccountDetails[8].trim() + "\n" + loanAccountDetails[9].trim() + "\n" +
+                                                loanAccountDetails[10].trim();
     if (loanAccountDetails[11].trim() == "N/A") 
     {
-        document.getElementById("customer2").value = loanAccountDetails[11].trim();
+        document.getElementById("customer2").textContent = loanAccountDetails[11].trim();
     }
     else
     {
-        document.getElementById("customer2").value = loanAccountDetails[11].trim() + ", " + loanAccountDetails[12].trim() + " " + loanAccountDetails[13].trim() + "\n" +
-																								loanAccountDetails[14].trim() + "\n" + loanAccountDetails[15].trim() + "\n" + loanAccountDetails[16].trim() + "\n" + 
-																								loanAccountDetails[17].trim() + "\n" + loanAccountDetails[18].trim() + "\n" + loanAccountDetails[19].trim() + "\n" +	
-																								loanAccountDetails[20].trim();
+        document.getElementById("customer2").textContent = loanAccountDetails[11].trim() + ", " + loanAccountDetails[12].trim() + " " + loanAccountDetails[13].trim() + "\n" +
+                                                    loanAccountDetails[14].trim() + "\n" + loanAccountDetails[15].trim() + "\n" + loanAccountDetails[16].trim() + "\n" + 
+                                                    loanAccountDetails[17].trim() + "\n" + loanAccountDetails[18].trim() + "\n" + loanAccountDetails[19].trim() + "\n" +
+                                                    loanAccountDetails[20].trim();
 
     }
     document.getElementById("balance").value = loanAccountDetails[21].trim();
-    document.getElementById("amountpaid").value = loanAccountDetails[22].trim();
-    document.getElementById("term").value = loanAccountDetails[23].trim();
+    document.getElementById("term").value = loanAccountDetails[22].trim();
+    document.getElementById("amountpaid").value = loanAccountDetails[23].trim();
     document.getElementById("monthlyrepayments").value = loanAccountDetails[24].trim();
+    document.getElementById("accountid").value = loanAccountDetails[0];
 }
 
 function toggleCustomerInfo()
@@ -178,5 +175,27 @@ function toggleCustomerInfo()
     if (selectedOption2 && selectedOption2.value !== '') 
     {
         info2.innerHTML = selectedOption2.getAttribute('data-info');
+    }
+}
+
+function confirmCheckAmend()
+{
+    // Give a pop up notification that asks you to confirm the changes you are trying to make after pressing the save changes button
+    var response;
+    response = confirm("Are you sure you want to delete this customer from the database?");
+
+    if (response)
+    {
+        // Unlock the textboxes so that the values can be changed 
+        document.getElementById("balance").disabled = false;
+        document.getElementById("amountpaid").disabled = false;
+        document.getElementById("term").disabled = false;
+        document.getElementById("monthlyrepayments").disabled = false;
+        return true;
+    }
+    else
+    {
+        populate();
+        return false;
     }
 }
