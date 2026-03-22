@@ -2,9 +2,9 @@
 // C00309151
 // JavaScript file for loan accounts
 
-// This validates details, toggles the select box for customer 2
-// and prompts the user to confirm wether the form should or shouldnt be submitted 
-
+// This function is used to toggle the second customer dropdown menu when the multiple customers button is pressed
+// If the button value is 2 Customers, the second dropdown menu will be revealed and the button value will change to 1 Customer
+// If the button value is 1 Customer, the second dropdown menu will be hidden and the button value will change to 2 Customers
 function toggleSelect()
 {
     let element = document.getElementById("customer2");
@@ -40,6 +40,11 @@ function toggleSelect()
         }
     }
 }
+
+// This function is used to ensure that the user wants to add an account to the database
+// If the user clicks ok, the form is submitted, if the user clicks cancel, the form is not submitted
+// If the user clicks ok, the function confirmDifferentCustomer() is called to ensure that the same customer is not selected in both dropdown menus
+// If the same customer is selected in both dropdown menus, an error message is displayed and the form is not submitted
 function confirmCheck()
 {
     confirmDifferentCustomer();
@@ -63,6 +68,9 @@ function confirmCheck()
         return false;
     }
 }
+
+// This function is used to confirm that the same customer is not selected in both dropdown menus when the form is submitted
+// If the same customer is selected in both dropdown menus, an error message is displayed and the form is not submitted
 function confirmDifferentCustomer()
 {
     const customer1 = document.getElementById("customer1").value;
@@ -81,6 +89,9 @@ function confirmDifferentCustomer()
     }
 }
 
+// This function is used to toggle the textboxes for the loan account details when the amend/view button is pressed
+// If the textboxes are disabled, they will be enabled and the button value will change to View Account
+// If the textboxes are enabled, they will be disabled and the button value will change to Amend Account
 function toggleLock()
 {
     if(document.getElementById("amendViewbutton").value == "Amend Account")
@@ -105,6 +116,10 @@ function toggleLock()
     }
 }
 
+// This function is used to condfirm the changes made to a loan account
+// the textboxes are enabled so that the values can be passed when the form is submitted
+// If the user cancels the changes, the textboxes are populated with the original values from the database
+// This is to ensure that the values are not lost when the user cancels the changes
 function confirmCheckAmend()
 {
     // Give a pop up notification that asks you to confirm the changes you are trying to make after pressing the save changes button
@@ -127,6 +142,8 @@ function confirmCheckAmend()
     }
 }
 
+// This function is used to populate the textboxes with values from the database when a customer is selected from the dropdown menu
+// The values are stored in the value attribute of the option element in the dropdown menu
 function populate()
 {
     // This populates the textboxes with values from the database
@@ -138,6 +155,7 @@ function populate()
                                                 loanAccountDetails[4].trim() + "\n" + loanAccountDetails[5].trim() + "\n" + loanAccountDetails[6].trim() + "\n" + 
                                                 loanAccountDetails[7].trim() + "\n" + loanAccountDetails[8].trim() + "\n" + loanAccountDetails[9].trim() + "\n" +
                                                 loanAccountDetails[10].trim();
+    // If the value of customer 2 is N/A, display N/A in the customer 2 field, otherwise display the customer 2 details in the customer 2 field
     if (loanAccountDetails[11].trim() == "N/A") 
     {
         document.getElementById("customer2").textContent = loanAccountDetails[11].trim();
@@ -157,6 +175,11 @@ function populate()
     document.getElementById("accountid").value = loanAccountDetails[0];
 }
 
+// This function is used to toggle the customer info when a customer is selected from the dropdown menu
+// The customer info is displayed in the p field below the dropdown menu
+// The customer info is stored in the data-info attribute of the option element in the dropdown menu
+// I used AI to gain an understanding of how to use the data-info attribute to store the customer info 
+// and display it in the p field when a customer is selected from the dropdown menu
 function toggleCustomerInfo()
 {
     // Use of AI in this section to display populated data in the p field
@@ -178,7 +201,11 @@ function toggleCustomerInfo()
     }
 }
 
-function confirmCheckAmend()
+// This function is used to condfirm the deletion of a loan account 
+// the textboxes are enabled so that the values can be passed when the form is submitted
+// If the user cancels the deletion, the textboxes are populated with the original values from the database
+// This is to ensure that the values are not lost when the user cancels the deletion
+function confirmCheckDelete()
 {
     // Give a pop up notification that asks you to confirm the changes you are trying to make after pressing the save changes button
     var response;
@@ -196,6 +223,48 @@ function confirmCheckAmend()
     else
     {
         populate();
+        return false;
+    }
+}
+
+// This function is used to confirm that the user wants to generate a report for the loan accounts
+// If the user enters a starting date that is after the ending date, an error message is displayed and the form is not submitted
+function confirmCheckReport()
+{
+    // Give a pop up notification that asks you to confirm that you want to generate the report
+    var response;
+    response = confirm("Are you sure you want to generate this report?");
+
+    if (response)
+    {
+        // Get the starting date and ending date from the textboxes
+        const startDate = document.getElementById("startDate").value;
+        const endDate = document.getElementById("endDate").value;
+        // Get the current date
+        var today = new Date();
+    
+        // Compare the dates
+        if (startDate > endDate) 
+        {
+            alert("Error: Starting date cannot be after the ending date.");
+            // Reset the starting date to an empty string so that the user can enter a new date
+            document.getElementById("startDate").value = "";
+            return false;
+        }
+        else if (endDate > today)
+        {
+            alert("Error: Ending date cannot be in the future.");
+            // Reset the ending date to an empty string so that the user can enter a new date
+            document.getElementById("endDate").value = "";
+            return false;
+        }
+        else
+        {
+            return true;    
+        }
+    }
+    else
+    {
         return false;
     }
 }

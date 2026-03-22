@@ -6,44 +6,10 @@
     </head>
 
     <body>
-        <div class="navbar">
-            <img src="images/logo.png" alt="Where wealth gets wild" class="logo">
-            
-            <div class="dropdown">
-                <button class="dropbutton"><a href="home.html">Home</a></button>
-            </div>
-            <div class="dropdown">
-                <button class="dropbutton"><a href="customer.html">Customer</a></button>
-            </div>
-            <div class="dropdown">
-                <button class="dropbutton"><a href="#">Current Account</a></button>
-                <div class="dropdown-content">
-                    <a href="#">Add Current Account</a>
-                    <a href="#">Remove Current Account</a>
-                    <a href="#">Update Current Account Details</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <button class="dropbutton"><a href="#">Deposit Account</a></button>
-                <div class="dropdown-content">
-                    <a href="#">Add Deposit Account</a>
-                    <a href="#">Remove Deposit Account</a>
-                    <a href="#">Update Deposit Account Details</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <button class="dropbutton"><a href="#">Loan Account</a></button>
-            </div>
-        </div>
-        <div class="container">
-            <div class="sidebar">
-                <h1>Customer Menu</h1>
-                <a href="openLoanAccount.html.php">Add Loan Account</a>
-                <a href="#">Delete Customer</a>
-                <a href="amendViewLoanAccount.html.php">Update Customer Details</a>
-            </div>
-
-            <div class="displaySelected">
+        <?php
+            include "menu.php";
+        ?>
+        <div class="displaySelected">
             <form action="amendViewLoans.php" method="POST" onsubmit="return confirmCheckAmend()">
                 <h2>Create Account</h2>
 
@@ -58,23 +24,23 @@
                             
                             $sql = "SELECT account.account_id, customer_id_1, customer_id_2, 
                             c1.name AS customer_1_name, 
-														c1.surname AS customer_1_surname,
-														c1.address AS customer_1_address,
-														c1.eircode AS customer_1_eircode,
-														c1.date_of_birth AS customer_1_dob,
-														c1.email AS customer_1_email,
-														c1.phone_number AS customer_1_phone,
-														c1.occupation AS customer_1_occupation,
-														c1.salary AS customer_1_salary,	
+                            c1.surname AS customer_1_surname,
+                            c1.address AS customer_1_address,
+                            c1.eircode AS customer_1_eircode,
+                            c1.date_of_birth AS customer_1_dob,
+                            c1.email AS customer_1_email,
+                            c1.phone_number AS customer_1_phone,
+                            c1.occupation AS customer_1_occupation,
+                            c1.salary AS customer_1_salary,	
                             c2.name AS customer_2_name, 
                             c2.surname AS customer_2_surname,
-														c2.address AS customer_2_address,
-														c2.eircode AS customer_2_eircode,
-														c2.date_of_birth AS customer_2_dob,
-														c2.email AS customer_2_email,
-														c2.phone_number AS customer_2_phone,
-														c2.occupation AS customer_2_occupation,
-														c2.salary AS customer_2_salary,	
+                            c2.address AS customer_2_address,
+                            c2.eircode AS customer_2_eircode,
+                            c2.date_of_birth AS customer_2_dob,
+                            c2.email AS customer_2_email,
+                            c2.phone_number AS customer_2_phone,
+                            c2.occupation AS customer_2_occupation,
+                            c2.salary AS customer_2_salary,	
                             loan_balance, term, loan_amount, monthly_repayments
                             FROM account 
                             INNER JOIN customers c1 ON account.customer_id_1 = c1.customer_id 
@@ -179,7 +145,6 @@
                     </div>
                 </div>
             </form>
-            </div>
         </div>
     </body>
 </html>
