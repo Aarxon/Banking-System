@@ -1,4 +1,7 @@
 <?php
+// Database configuration file 
+// This file will be included on all pages that require a connection to the database
+
 // Database connection settings
 $hostname = "localhost";
 $username = "RealBank"; 

@@ -1,4 +1,9 @@
 <html>
+    <!--
+        This page will take in the information to display reports for the selected customer and date range
+        The user will select a customer and a date range and then click on the generate report button
+        It will pass on to the accountReport.php page where the report will be generated
+    -->
     <head>
         <link rel="stylesheet" href="style.css">
         <script src="LoanAccountJS.js"></script>
@@ -12,14 +17,13 @@
         <div class="displaySelected">
             <form action="accountReport.php" method="POST" onsubmit="return confirmCheckReport()">
                 <div class="form-row">
-                    <label for="customer">Select Customer</label>
+                    <h2>Select Customer</h2>
                     <select name="customer" id="customer" class="selectBox">
                         <!-- Options will be populated by PHP -->
                         <?php
                             include "dbcon.php";
-                            session_start();
 
-                            $sql = "SELECT * FROM customers WHERE deleted_flag = 0";
+                            $sql = "SELECT customer_id, name, surname FROM customers WHERE deleted_flag = 0";
 
                             if(!$result = mysqli_query($con, $sql))
                             {
@@ -31,14 +35,13 @@
                                 $id = $row['customer_id'];
                                 $firstname = $row['name'];
                                 $lastname = $row['surname'];
-                                $allText = "$id - $firstname $lastname";
-                                $_SESSION['customerid'] = $id;
+                                $allText = "$id, $firstname, $lastname";
                                 echo "<option value='$allText'>$id - $firstname $lastname</option>";
                             }
-
-                            mysqli_close($con);
+                            
                         ?>
                     </select>
+                    <input type="hidden" id="customerid" name="customerid">
                 </div>
                 <br>
                 <h1>Select A Date Range</h1>

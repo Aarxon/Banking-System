@@ -243,6 +243,16 @@ function confirmCheckReport()
         // Get the current date
         var today = new Date();
     
+        // Store the customer id as a session variable
+        var sel = document.getElementById("customer");
+        var result;
+        result = sel.options[sel.selectedIndex].value;
+        var customerDetails = result.split(',');
+
+        var customerid = customerDetails[0].trim();
+        document.getElementById("customerid").value = customerid;
+        
+        
         // Compare the dates
         if (startDate > endDate) 
         {

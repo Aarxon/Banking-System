@@ -1,4 +1,8 @@
 <html>
+    <!-- 
+        This is a placeholder home page 
+        It Just displays a welcome message for users
+    -->
     <head>
         <link rel="stylesheet" href="style.css">
         <title>Home</title>

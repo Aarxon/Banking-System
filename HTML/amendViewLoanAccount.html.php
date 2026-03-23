@@ -1,4 +1,8 @@
 <html>
+    <!--
+        This page will allow the user to amend or view loan account details
+        Customer details will be displayed in case of the of multiple customers with the same name
+    -->
     <head>
         <link rel="stylesheet" href="style.css">
         <script src="LoanAccountJS.js"></script>
@@ -21,7 +25,10 @@
                         <select name='account' id='account' class='selectbox' onclick='populate()'>
                         <?php
                             include "dbcon.php";  // Database connection
-                            
+
+                            // SQL query to select all loan accounts that are not marked as deleted
+                            // Along with their associated customer details
+                            // If the account has a second customer, their details will also be selected, if not the fields will be left blank
                             $sql = "SELECT account.account_id, customer_id_1, customer_id_2, 
                             c1.name AS customer_1_name, 
                             c1.surname AS customer_1_surname,
@@ -55,6 +62,7 @@
 
                             while($row = mysqli_fetch_array($result))
                             {
+                                //Store all the selected rows as variables
                                 $id = $row['account_id'];
                                 $customer1id = $row['customer_id_1'];
                                 $customer1name = $row['customer_1_name'];
@@ -81,6 +89,8 @@
                                 $loan_amount = $row['loan_amount'];
                                 $monthly_repayments = $row['monthly_repayments'];
 
+                                // If there is no second customer
+                                // The fields for the second customer will be left blank
                                 if ($customer2id == null) {
                                     $customer2id = "N/A";
                                     $customer2name = "";
@@ -126,7 +136,7 @@
                     </div>
                     <div class="form-group">
                     <label for="amountpaid">Current Amount Paid Off</label>
-                    <input name="amountpaid" id="amountpaid" type="number" required disabled/>
+                    <input name="amountpaid" id="amountpaid" type="number" required disabled autofocus/>
                     </div>
                 </div>
                 <div class="form-row">

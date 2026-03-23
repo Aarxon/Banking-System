@@ -1,4 +1,8 @@
 <html>
+    <!--
+        This page will take in the information to amend a loan account
+        It will update the loan account details in the database and then display a message to the user that the account has been changed
+     -->
     <head>
         <link rel="stylesheet" href="style.css">
         <script src="LoanAccountJS.js"></script>
@@ -21,6 +25,8 @@
                 }
 
                 echo "Account has been changed!";
+
+                mysqli_close($con);
             ?>
 
             <!-- A form to return to the amend/view page -->

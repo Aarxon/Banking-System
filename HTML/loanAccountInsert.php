@@ -1,4 +1,8 @@
 <html>
+    <!--
+        This page will take the information from openLoanAccount.html.php and insert the loan account into the database
+        The user will be informed that the account has been created and will have the option to return
+    -->
     <head>
         <link rel="stylesheet" href="style.css">
         <script src="LoanAccountJS.js"></script>
@@ -14,6 +18,7 @@
                 include 'dbcon.php';
                 date_default_timezone_set('UTC');
 
+                // Select all loan accounts from the database with the account type 'Loan'
                 $sql = "SELECT * FROM account WHERE account_type = 'Loan'";
 
                 $runsql = true;
@@ -75,6 +80,7 @@
                         die ("An Error in the SQL Query: " . mysqli_error($con));
                     }
 
+                    //
                     if(!isset($_POST['customer2'])  || $_POST['customer2'] === "")
                     {
                         $sql = "SELECT account_id FROM account WHERE customer_id_1 = '$_POST[customer1]' AND customer_id_2 IS NULL AND account_type = 'Loan' AND deleted_flag = 0";

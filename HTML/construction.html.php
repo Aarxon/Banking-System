@@ -1,4 +1,8 @@
 <html>
+    <!--
+        This page is a placeholder for the new website that is under construction
+        It will display a message to the user that the website is under construction and that a new site is coming soon
+     -->
     <head>
         <link rel="stylesheet" href="style.css">
         <title>Under Construction</title>
