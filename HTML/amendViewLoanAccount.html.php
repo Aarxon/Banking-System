@@ -15,8 +15,8 @@
         ?>
         <div class="displaySelected">
             <form action="amendViewLoans.php" method="POST" onsubmit="return confirmCheckAmend()">
-                <h2>Create Account</h2>
-
+                <h2>Amend or View Loan Account</h2>
+                <br>
                 <input type="button" value="Amend Account" id="amendViewbutton" name="amendViewbutton" onclick="toggleLock()" class="customerButton">
 
                 <div class='form-row'>

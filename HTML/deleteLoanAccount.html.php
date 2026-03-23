@@ -11,7 +11,7 @@
         ?>
         <div class="displaySelected">
             <form action="deleteLoans.php" method="POST" onsubmit="return confirmCheckDelete()">
-                <h2>Delete Account</h2>
+                <h2>Delete Loan Account</h2>
 
                 <div class='form-row'>
                     <div class='form-group'>
