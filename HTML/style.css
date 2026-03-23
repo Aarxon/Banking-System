@@ -83,44 +83,15 @@ a.topActive {
     background-color: rgb(17, 34, 80);
 }
 
-/* Sidebar style */
-.sidebar {
-    height: 100%;
-    width: 250px;
-    background-color: rgb(17, 34, 80);
-    display: flex;
-    flex-direction: column;
-}
-
-/* sidebar links style */
-.sidebar a {
-    padding: 10px 40px;
-    text-decoration: none;
-    color: white;
-    height: 60px;
-    font-size: 18px;
-} 
-
-/* sidebar hover style */
-.sidebar a:hover {
-    color: rgb(224, 181, 143);
-    background-color: rgb(48, 80, 112);
-}
-
-/* Show active link in sidebar */
-.sidebar a.active {
-    color: rgb(224, 181, 143);
-}
-
 h1 {
-    color: white;
+    color: black;
     font-size: 22px;
     padding: 20px 40px;
     border-bottom: 2px;
     border-top: 0px;
     border-left: 0px;
     border-right: 0px;
-    border-color: white;
+    border-color: black;
     border-style: solid;
 }
 
@@ -130,15 +101,13 @@ h1 {
     height: 80px;
 }
 
-.container {
-    display: flex;
-    /* calc is used to mitigate the 80px height of the nav bar to prevent unneccesary scroll bars */
-    height: calc(100% - 80px);
-}
-
 .displaySelected
 {
 	padding: 10px;
+    margin: auto;
+    /* calc is used to make the height of the div fill the remaining space below the navbar */
+    /* This removes the scroll bar that would appear if the height of the div was set to 100% */
+    height: calc(100% - 80px);
 }
 
 form h2

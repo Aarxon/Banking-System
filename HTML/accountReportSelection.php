@@ -13,7 +13,7 @@
             <form action="accountReport.php" method="POST" onsubmit="return confirmCheckReport()">
                 <div class="form-row">
                     <label for="customer">Select Customer</label>
-                    <select name="customer" id="customer">
+                    <select name="customer" id="customer" class="selectBox">
                         <!-- Options will be populated by PHP -->
                         <?php
                             include "dbcon.php";
