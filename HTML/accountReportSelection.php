@@ -16,13 +16,14 @@
         ?>
         <div class="displaySelected">
             <form action="accountReport.php" method="POST" onsubmit="return confirmCheckReport()">
+                <h2>Select Customer</h2>
                 <div class="form-row">
-                    <h2>Select Customer</h2>
                     <select name="customer" id="customer" class="selectBox">
                         <!-- Options will be populated by PHP -->
                         <?php
                             include "dbcon.php";
 
+                            // Select customer ID, name and surname from the customers table where the deleted flag is 0
                             $sql = "SELECT customer_id, name, surname FROM customers WHERE deleted_flag = 0";
 
                             if(!$result = mysqli_query($con, $sql))
@@ -30,6 +31,7 @@
                                 die("An Error in the SQL Query: " . mysqli_error($con));   
                             }
                             
+                            //populate the select box with the customer details
                             while($row = mysqli_fetch_array($result))
                             {
                                 $id = $row['customer_id'];
@@ -56,7 +58,7 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <input type="submit" value="Generate Report"/>
+                    <input type="submit" value="Generate Report" class="customerButton"/>
                 </div>
             </form>
         </div>

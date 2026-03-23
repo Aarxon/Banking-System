@@ -99,10 +99,10 @@
                                     $customer2salary = "";
                                 }
                                 
-                                    $allText = "$id, 
-                                    $customer1id, $customer1name, $customer1surname, $customer1address, $customer1eircode, $customer1dob, $customer1email, $customer1phone, $customer1occupation, $customer1salary,
-                                    $customer2id, $customer2name, $customer2surname, $customer2address, $customer2eircode, $customer2dob, $customer2email, $customer2phone, $customer2occupation, $customer2salary,
-                                    $loan_balance, $term, $loan_amount, $monthly_repayments";
+                                    $allText = "$id|
+                                    $customer1id| $customer1name| $customer1surname| $customer1address| $customer1eircode| $customer1dob| $customer1email| $customer1phone| $customer1occupation| $customer1salary|
+                                    $customer2id| $customer2name| $customer2surname| $customer2address| $customer2eircode| $customer2dob| $customer2email| $customer2phone| $customer2occupation| $customer2salary|
+                                    $loan_balance| $term| $loan_amount| $monthly_repayments";
                                 echo "<option value='$allText'>$id</option>";
    
                             }
@@ -148,7 +148,7 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                    <input type="submit" value="Delete Account" class="myButton">
+                    <input type="submit" value="Delete Account" class="dangerButton">
                     </div>
                 </div>
             </form>

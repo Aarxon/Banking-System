@@ -2,6 +2,9 @@
     <!--
         This page will take the information from openLoanAccount.html.php and insert the loan account into the database
         The user will be informed that the account has been created and will have the option to return
+        It will add information to the account table, loan_account table and transactions table
+        The account table will produce an ID which will be used to link the account table to loan_account table
+        The account ID will also then link the loan account to the transactions table for the initital deposits
     -->
     <head>
         <link rel="stylesheet" href="style.css">
@@ -80,7 +83,9 @@
                         die ("An Error in the SQL Query: " . mysqli_error($con));
                     }
 
-                    //
+                    // Select the account ID for the new account that has been created
+                    // The if statement will ensure the correct account ID is selected 
+                    // This is based of wether there are two customers being added to the database
                     if(!isset($_POST['customer2'])  || $_POST['customer2'] === "")
                     {
                         $sql = "SELECT account_id FROM account WHERE customer_id_1 = '$_POST[customer1]' AND customer_id_2 IS NULL AND account_type = 'Loan' AND deleted_flag = 0";
@@ -103,6 +108,7 @@
 
                     echo "Account ID for new account is: " . $account_id;
 
+                    // Insert the data into the loan account table using the account ID from the account table to link the two tables together
                     $sql = "INSERT into loan_account (account_id, loan_balance, term, loan_amount, monthly_repayments, deleted_flag) VALUES ('$account_id', '$_POST[balance]', $_POST[term], '$loan_amount', '$monthly_repayments', 0)";
                     // Run the query and see if it returns a value
                     if (!mysqli_query($con, $sql))
@@ -112,6 +118,8 @@
 
                     $date = date('Y-m-d');
 
+                    // Insert the initial loan amount into the transactions table as a deposit transaction
+                    // A date variable is created to enter the date of the lodgement which is automatically set to today
                     $sql = "INSERT INTO transactions (account_id, transaction_type, transaction_amount, balance, transaction_date) VALUES ('$account_id', 'Deposit', $loan_amount, '$loan_amount', '$date')";
                     // Run the query and see if it returns a value
                     if (!mysqli_query($con, $sql))
@@ -132,7 +140,7 @@
             <form action="openLoanAccount.html.php" method="POST">
                 <br>
                 <div class="form-row">
-                    <input type="submit" value="Return to Insert Page"/>
+                    <input type="submit" value="Return to Insert Page" class="customerButton"/>
                 </div>
             </form>
         </div>

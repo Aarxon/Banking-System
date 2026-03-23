@@ -73,13 +73,14 @@
                             die("An Error in the SQL Query: " . mysqli_error($con));   
                         }
 
+                        echo "<h3>Account type: " . $row['a.account_type'] . "</h3>";
                         // Display the transactions in a table
                         echo "<table>";
                         echo "<tr><th>Transaction ID</th><th>Transaction Type</th><th>Amount</th><th>Transaction Date</th></tr>";
                         echo "<tr></tr>";
                         while($row = mysqli_fetch_array($result))
                         {
-                            echo "<tr><td>" . $row['transaction_id'] . "</td><td>" . $row['transaction_type'] . "</td><td>" . $row['transaction_amount'] . "</td><td>" . $row['transaction_date'] . "</td></tr>";
+                            echo "<tr><td>" . $row['t.transaction_id'] . "</td><td>" . $row['t.transaction_type'] . "</td><td>" . $row['t.transaction_amount'] . "</td><td>" . $row['t.transaction_date'] . "</td></tr>";
                         }
                         echo "</table><br><br>";
 
@@ -110,13 +111,14 @@
                             die("An Error in the SQL Query: " . mysqli_error($con));   
                         }
 
+                        echo "<h3>Account type: " . $row['a.account_type'] . "</h3>";
                         // Display the transactions in a table
-                        echo "<table>";
+                        echo "<table class='reportTable'>";
                         echo "<tr><th>Transaction ID</th><th>Transaction Type</th><th>Amount</th><th>Transaction Date</th></tr>";
                         echo "<tr></tr>";
                         while($row = mysqli_fetch_array($result))
                         {
-                            echo "<tr><td>" . $row['transaction_id'] . "</td><td>" . $row['transaction_type'] . "</td><td>" . $row['transaction_amount'] . "</td><td>" . $row['transaction_date'] . "</td></tr>";
+                            echo "<tr><td>" . $row['t.transaction_id'] . "</td><td>" . $row['t.transaction_type'] . "</td><td>" . $row['t.transaction_amount'] . "</td><td>" . $row['t.transaction_date'] . "</td></tr>";
                         }
                         echo "</table><br><br>";
 
@@ -127,10 +129,10 @@
                 mysqli_close($con);
             ?>
             <!-- A form to return to the amend/view page -->
-            <form action="amendViewLoanAccount.html.php" method="POST">
+            <form action="accountReportSelection.php" method="POST">
                 <br>
                 <div class="form-row">
-                    <input type="submit" value="Return to Previous Page"/>
+                    <input type="submit" value="Return to Previous Page" class="customerButton"/>
                 </div>
             </form>
         </div>

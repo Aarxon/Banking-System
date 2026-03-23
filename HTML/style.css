@@ -83,6 +83,9 @@ a.topActive {
     background-color: rgb(17, 34, 80);
 }
 
+/* h1 style to create a black label with an underline */
+/* Borders were used to create this effect */
+/* Text decoration would fill the entire screen so we opted for borders */
 h1 {
     color: black;
     font-size: 22px;
@@ -95,11 +98,14 @@ h1 {
     border-style: solid;
 }
 
+/* resize the logo to fit into the nav bar top left corner */
 .logo {
     width: 80px;
     height: 80px;
 }
 
+/* this is the main body of the screen under the nav bar */
+/* nav bar height taken into account for scroll bars */
 .displaySelected
 {
 	padding: 10px;
@@ -109,6 +115,7 @@ h1 {
     height: calc(100% - 80px);
 }
 
+/* give anything with h2 label a nice colour to match the colour of the page */
 h2
 {
 	text-align: left; /* put in the vertical middle of the form */
@@ -122,18 +129,22 @@ label
 	margin-bottom: 5px;	
 }
 
+/* form row is used to create a div that can hold two inputs and place them side by side to conserve space */
 .form-row 
 {
   	display: flex;
 	flex-direction: row;
 }
 
+/* Styling for the form group div */
+/* Increase the label font size for the text boxes inside this div */
 .form-group 
 {
 	padding: 5px;
     font-size: 22px;
 }
 
+/* input box styling within the form group div */
 .form-group input 
 {
   	width: 500px;
@@ -141,6 +152,7 @@ label
     font-size: 20px;
 }
 
+/* Any submit buttons styling to match the style of our pages */
 .customerButton
 {
     height: 40px;
@@ -151,7 +163,7 @@ label
     border: none;
 }
 
-/* The div that holds both buttons */
+/* The button that is least likely to be pressed styling to make a difference of importance */
 .myButton
 {
 	height:40px; /* How tall button is */
@@ -164,6 +176,7 @@ label
 	font-size: 15px;
 }
 
+/* Style to make the select boxes match the input boxes */
 .selectBox
 {
     width: 500px;
@@ -171,6 +184,7 @@ label
     font-size: 20px;
 }
 
+/* This is used to hide any text that we want to reveal using JS */
 .hideText
 {
     visibility: hidden;
@@ -180,19 +194,23 @@ label
 .underconstruction
 {
     position: absolute;
-    height: fit-content;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
+	left: 0;
+	right:0;
     text-align: center;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
     color: rgb(17, 34, 80);
 }
 
+/* Style the text and move it closer to the image */
+.underconstructionText
+{
+    position: relative;
+    top: -150px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* Customer information styling block that creates a text box like look for customer details 
+    to be displayed on */
 .customerInfo
 {
     background-color: white;
@@ -203,4 +221,29 @@ label
     height: 250px;
     font-size: 20px;
     white-space: pre-wrap; /* newlines (\n) in text content */
+}
+
+/* Styling for the tables used to display reports */
+.reportTable
+{
+    border: 2px solid black;
+    padding: 5px;
+}
+
+/* Styling for the headings used in the reports */
+.reportHeadings
+{
+    font-size: 16px;
+    color: navy;
+}
+
+/* A red button suitable for delete operations */
+.dangerButton
+{
+    height: 40px;
+    width: 140px;
+    background-color: rgb(163, 31, 31);
+    color: white;
+    font-size: 15px;
+    border: none;
 }

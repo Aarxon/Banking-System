@@ -150,7 +150,7 @@ function populate()
     var sel = document.getElementById("account");
     var result;
     result = sel.options[sel.selectedIndex].value;
-    var loanAccountDetails = result.split(',');
+    var loanAccountDetails = result.split('|');
     document.getElementById("customer1").textContent = loanAccountDetails[1].trim() + ", " + loanAccountDetails[2].trim() + " " + loanAccountDetails[3].trim() + "\n" +
                                                 loanAccountDetails[4].trim() + "\n" + loanAccountDetails[5].trim() + "\n" + loanAccountDetails[6].trim() + "\n" + 
                                                 loanAccountDetails[7].trim() + "\n" + loanAccountDetails[8].trim() + "\n" + loanAccountDetails[9].trim() + "\n" +

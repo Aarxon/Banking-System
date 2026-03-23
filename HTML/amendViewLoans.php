@@ -17,6 +17,8 @@
             <?php
                 include "dbcon.php";
 
+                // Update the loan account details in the database
+                // The account ID is used to identify the loan account to be updated
                 $sql = "UPDATE loan_account SET loan_balance = '$_POST[balance]', term = '$_POST[term]', loan_amount = '$_POST[amountpaid]', monthly_repayments = '$_POST[monthlyrepayments]' WHERE account_id = '$_POST[accountid]'";
 
                 if(!mysqli_query($con, $sql))
@@ -33,7 +35,7 @@
             <form action="amendViewLoanAccount.html.php" method="POST">
                 <br>
                 <div class="form-row">
-                    <input type="submit" value="Return to Previous Page"/>
+                    <input type="submit" value="Return to Previous Page" class="customerButton"/>
                 </div>
             </form>
         </div>

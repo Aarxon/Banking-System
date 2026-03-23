@@ -15,7 +15,7 @@
         <div class="displaySelected">
             <div class="underconstruction">
             <img src="images/under_construction.png" alt="under construction logo">
-            <p> REAL Bank <br> <br>
+            <p class="underconstructionText"> REAL Bank <br> <br>
             Website under construction <br>
             All-new site is coming soon! </p>
             </div>

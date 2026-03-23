@@ -24,6 +24,8 @@
                 }
                 else
                 {
+                    // Update the loan account deleted flag by setting it to 1in the database
+                    // The account ID is used to identify the loan account to be updated
                     $sql = "UPDATE loan_account SET deleted_flag = 1 WHERE account_id = '$_POST[accountid]'";
 
                     if(!mysqli_query($con, $sql))
@@ -31,6 +33,8 @@
                         die("An Error in the SQL Query: " . mysqli_error($con));   
                     }
 
+                    // Update the account deleted flag by setting it to 1 in the database
+                    // The account ID is used to identify the account to be updated
                     $sql = "UPDATE account SET deleted_flag = 1 WHERE account_id = '$_POST[accountid]'";
 
                     if(!mysqli_query($con, $sql))
@@ -47,7 +51,7 @@
             <form action="deleteLoanAccount.html.php" method="POST">
                 <br>
                 <div class="form-row">
-                    <input type="submit" value="Return to Previous Page"/>
+                    <input type="submit" value="Return to Previous Page" class="customerButton"/>
                 </div>
             </form>
         </div>

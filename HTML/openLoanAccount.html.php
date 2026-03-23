@@ -1,4 +1,10 @@
 <html>
+    <!-- 
+        This is the page where loan accounts are created 
+        Two customers are allowed to be added to one account 
+        When the customers are chosen from the list box a p field is populated with the respective customers details
+    -->
+
     <head>
         <link rel="stylesheet" href="style.css">
         <script src="LoanAccountJS.js"></script>
@@ -18,6 +24,7 @@
             <?php
                 include "dbcon.php";  // Database connection
 
+                // Select all customers that have not been deleted from the database
                 $sql = "SELECT * FROM customers WHERE deleted_flag=0";
 
                 if(!$result = mysqli_query($con, $sql))
@@ -31,6 +38,7 @@
                 <select name='customer1' id='customer1' class='selectbox' onchange='toggleCustomerInfo()' value='' required>";
                 echo "<option hidden value=''>-- Select Customer 1 --</option>";
 
+                // Populate a select box with the customers details  
                 while($row = mysqli_fetch_array($result))
                 {
                     $id = $row['customer_id'];
@@ -44,6 +52,7 @@
                     $occupation = $row['occupation'];
                     $salary = $row['salary'];
                     $customer1Info = "ID: $id<br>Name: $name $surname<br>Address: $address<br>Eircode: $eircode<br>Date of Birth: $DOB<br>Email: $email<br>Phone Number: $phone_number<br>Occupation: $occupation<br>Salary: $salary";
+                    // data-info stores the customer info to allow collection and population of the p field 
                     echo "<option value='$id' data-info='$customer1Info'>$id, $name $surname</option>";
                 }
             
@@ -58,6 +67,8 @@
                 echo "<option hidden value=''>-- Select Customer 2 --</option>";
             
                 mysqli_data_seek($result, 0);   // Reset the result pointer to iterate from the top of the database again
+                // Populate the second select box with all the same customers as the first 
+                // In the submission of the form it checks wether the customers are the same 
                 while($row = mysqli_fetch_array($result))
                 {
                     $id = $row['customer_id'];
@@ -71,6 +82,7 @@
                     $occupation = $row['occupation'];
                     $salary = $row['salary'];
                     $customer2Info = "ID: $id<br>Name: $name $surname<br>Address: $address<br>Eircode: $eircode<br>Date of Birth: $DOB<br>Email: $email<br>Phone Number: $phone_number<br>Occupation: $occupation<br>Salary: $salary";
+                    // Data-info stores the customer info to allow collection and population of the p field
                     echo "<option value='$id' data-info='$customer2Info'>$id, $name $surname</option>";
                 }
             
@@ -88,6 +100,8 @@
                 <div class="form-group">
                     <?php
                         include "dbcon.php";
+
+                        // Select the maximum account ID from the account table and add 1 to it to get the next account ID for the new account
                         $sql = "SELECT MAX(account_id) + 1 FROM account";
 
                         if(!$result = mysqli_query($con, $sql))
@@ -119,7 +133,7 @@
                 </div>
             </div>
             <div class="form-row">
-                <input type="submit" value="Submit" class="myButton">
+                <input type="submit" value="Submit" class="customerButton">
                 <input type="reset" value="Clear" class="myButton">
             </div>
         </form>
