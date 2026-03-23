@@ -1,5 +1,7 @@
 <html>
     <!--
+        Created by: Ethan Payne (C00309151)
+        Date: March 2026
         This page will take the information from deleteLoanAccount.html.php and delete the loan account from the database
         The account will not be deleted from the database but will have a deleted flag set to 1 to indicate that it has been deleted
         The user will be informed that the account has been deleted and will have the option to return to the previous page

@@ -1,5 +1,7 @@
 <html>
     <!--
+        Created by: Ethan Payne (C00309151)
+        Date: March 2026
         This page will display the report for the selected customer and date range
         The report will show all transactions for the selected customer
         It will show all accounts excluding deposit accounts for a selected customer
@@ -24,8 +26,8 @@
                 $sixMonthsAgo = date("Y-m-d", strtotime("-6 months"));
 
                 $customer = $_POST['customer'];
-                $startDate = $_POST['startDate'];
-                $endDate = $_POST['endDate'];
+                $startDate = date('Y-m-d', strtotime($_POST['startDate']));
+                $endDate = date('Y-m-d', strtotime($_POST['endDate']));
 
                 // Create an array to store all accounts with the customer as a holder
                 $account_ids = [];
@@ -50,82 +52,61 @@
                     array_push($account_ids, $row['account_id']);
                 }
                
-                if(isset($_POST['startDate']) && isset($_POST['endDate']))
+                if((!isset($_POST['startDate']) || $_POST['startDate'] == '') && (!isset($_POST['endDate']) || $_POST['endDate'] == ''))
                 {
-                    while($i < count($account_ids))
-                    {
-                        echo "<div class='accountReport'>";
-                        echo "<h2 class='reportHeadings'>Account ID: " . $account_ids[$i] . "</h2>";
-                        // SQL query to select all transactions for the selected customer and date range
-                        // The query joins the transactions and accounts tables to get the account type for each transaction
-                        // this will build muiltiple tables for each account that the customer has
-                        $sql = "SELECT t.transaction_id, t.transaction_type, t.transaction_amount, t.transaction_date, a.account_id, a.account_type 
-                        FROM transactions t
-                        INNER JOIN account a ON t.account_id = a.account_id
-                        WHERE t.account_id = '$account_ids[$i]' 
-                        AND t.transaction_date >= '$startDate' 
-                        AND t.transaction_date <= '$endDate' 
-                        AND (a.account_type = 'Loan' OR a.account_type = 'Current')
-                        ORDER BY t.transaction_date ASC";
-
-                        if(!$result = mysqli_query($con, $sql))
-                        {
-                            die("An Error in the SQL Query: " . mysqli_error($con));   
-                        }
-
-                        echo "<h3>Account type: " . $row['a.account_type'] . "</h3>";
-                        // Display the transactions in a table
-                        echo "<table>";
-                        echo "<tr><th>Transaction ID</th><th>Transaction Type</th><th>Amount</th><th>Transaction Date</th></tr>";
-                        echo "<tr></tr>";
-                        while($row = mysqli_fetch_array($result))
-                        {
-                            echo "<tr><td>" . $row['t.transaction_id'] . "</td><td>" . $row['t.transaction_type'] . "</td><td>" . $row['t.transaction_amount'] . "</td><td>" . $row['t.transaction_date'] . "</td></tr>";
-                        }
-                        echo "</table><br><br>";
-
-                        $i++;
-                        echo "</div>";
-                    }
+                    // No dates provided - use last 6 months
+                    $dateFrom = $sixMonthsAgo;
+                    $dateTo = $today;
                 }
                 else
                 {
-                    while($i < count($account_ids))
+                    // Dates provided - use selected range
+                    $dateFrom = $startDate;
+                    $dateTo = $endDate;
+                }
+
+                while($i < count($account_ids))
+                {
+                    $id = $account_ids[$i];
+                    echo "<div class='accountReport'>";
+                    echo "<h2 class='reportHeadings'>Account ID: " . $id . "</h2>";
+
+                    $sql = "SELECT t.transaction_id, t.transaction_type, t.transaction_amount, t.transaction_date, a.account_id, a.account_type 
+                            FROM transactions t
+                            INNER JOIN account a ON t.account_id = a.account_id
+                            WHERE t.account_id = '$id' 
+                            AND t.transaction_date >= '$dateFrom' 
+                            AND t.transaction_date <= '$dateTo' 
+                            ORDER BY t.transaction_date ASC";
+
+                    if(!$result = mysqli_query($con, $sql))
                     {
-                        echo "<div class='accountReport'>";
-                        echo "<h2 class='reportHeadings'>Account ID: " . $account_ids[$i] . "</h2>";
-                        // SQL query to select all transactions for the selected customer and date range
-                        // The query joins the transactions and accounts tables to get the account type for each transaction
-                        // this will build muiltiple tables for each account that the customer has
-                        $sql = "SELECT t.transaction_id, t.transaction_type, t.transaction_amount, t.transaction_date, a.account_id, a.account_type 
-                        FROM transactions t
-                        INNER JOIN account a ON t.account_id = a.account_id
-                        WHERE t.account_id = '$account_ids[$i]' 
-                        AND t.transaction_date >= '$sixMonthsAgo' 
-                        AND t.transaction_date <= '$today' 
-                        AND (a.account_type = 'Loan' OR a.account_type = 'Current')
-                        ORDER BY t.transaction_date ASC";
+                        die("An Error in the SQL Query: " . mysqli_error($con));   
+                    }
 
-                        if(!$result = mysqli_query($con, $sql))
-                        {
-                            die("An Error in the SQL Query: " . mysqli_error($con));   
-                        }
-
-                        echo "<h3>Account type: " . $row['a.account_type'] . "</h3>";
-                        // Display the transactions in a table
+                    if(mysqli_num_rows($result) == 0)
+                    {
+                        echo "<p>No transactions found</p><br><br>";
+                    }
+                    else
+                    {
                         echo "<table class='reportTable'>";
-                        echo "<tr><th>Transaction ID</th><th>Transaction Type</th><th>Amount</th><th>Transaction Date</th></tr>";
-                        echo "<tr></tr>";
+                        echo "<tr><th>Transaction ID</th><th>Transaction Type</th><th>Amount</th><th>Transaction Date</th><th>Account Type</th></tr>";
                         while($row = mysqli_fetch_array($result))
                         {
-                            echo "<tr><td>" . $row['t.transaction_id'] . "</td><td>" . $row['t.transaction_type'] . "</td><td>" . $row['t.transaction_amount'] . "</td><td>" . $row['t.transaction_date'] . "</td></tr>";
+                            echo "<tr>
+                                <td>" . $row['transaction_id'] . "</td>
+                                <td>" . $row['transaction_type'] . "</td>
+                                <td>" . $row['transaction_amount'] . "</td>
+                                <td>" . $row['transaction_date'] . "</td>
+                                <td>" . $row['account_type'] . "</td>
+                            </tr>";
                         }
-                        echo "</table><br><br>";
-
-                        $i++;
-                        echo "</div>";
+                        echo "</table>";
                     }
-                }
+                    $i++;
+                    echo "</div><br><br>";
+}
                 mysqli_close($con);
             ?>
             <!-- A form to return to the amend/view page -->

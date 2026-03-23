@@ -1,5 +1,7 @@
 <html>
     <!--
+        Created by: Ethan Payne (C00309151)
+        Date: March 2026
         This page will take in the information to display reports for the selected customer and date range
         The user will select a customer and a date range and then click on the generate report button
         It will pass on to the accountReport.php page where the report will be generated

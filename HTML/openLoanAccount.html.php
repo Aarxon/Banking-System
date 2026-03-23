@@ -1,5 +1,7 @@
 <html>
     <!-- 
+        Created by: Ethan Payne (C00309151)
+        Date: February 2026
         This is the page where loan accounts are created 
         Two customers are allowed to be added to one account 
         When the customers are chosen from the list box a p field is populated with the respective customers details
@@ -51,7 +53,8 @@
                     $phone_number = $row['phone_number'];
                     $occupation = $row['occupation'];
                     $salary = $row['salary'];
-                    $customer1Info = "ID: $id<br>Name: $name $surname<br>Address: $address<br>Eircode: $eircode<br>Date of Birth: $DOB<br>Email: $email<br>Phone Number: $phone_number<br>Occupation: $occupation<br>Salary: $salary";
+                    $customer1Info = "ID: $id<br>Name: $name $surname<br>Address: $address<br>Eircode: $eircode<br>Date of Birth: $DOB<br>Email: $email<br>Phone Number: $phone_number
+                    <br>Occupation: $occupation<br>Salary: $salary";
                     // data-info stores the customer info to allow collection and population of the p field 
                     echo "<option value='$id' data-info='$customer1Info'>$id, $name $surname</option>";
                 }
@@ -81,7 +84,8 @@
                     $phone_number = $row['phone_number'];
                     $occupation = $row['occupation'];
                     $salary = $row['salary'];
-                    $customer2Info = "ID: $id<br>Name: $name $surname<br>Address: $address<br>Eircode: $eircode<br>Date of Birth: $DOB<br>Email: $email<br>Phone Number: $phone_number<br>Occupation: $occupation<br>Salary: $salary";
+                    $customer2Info = "ID: $id<br>Name: $name $surname<br>Address: $address<br>Eircode: $eircode<br>Date of Birth: $DOB<br>Email: $email
+                    <br>Phone Number: $phone_number<br>Occupation: $occupation<br>Salary: $salary";
                     // Data-info stores the customer info to allow collection and population of the p field
                     echo "<option value='$id' data-info='$customer2Info'>$id, $name $surname</option>";
                 }

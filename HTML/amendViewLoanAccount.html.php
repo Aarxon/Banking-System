@@ -1,5 +1,7 @@
 <html>
     <!--
+        Created by: Ethan Payne (C00309151)
+        Date: March 2026
         This page will allow the user to amend or view loan account details
         Customer details will be displayed in case of the of multiple customers with the same name
     -->
@@ -105,8 +107,10 @@
                                 }
                                 
                                     $allText = "$id| 
-                                    $customer1id| $customer1name| $customer1surname| $customer1address| $customer1eircode| $customer1dob| $customer1email| $customer1phone| $customer1occupation| $customer1salary|
-                                    $customer2id| $customer2name| $customer2surname| $customer2address| $customer2eircode| $customer2dob| $customer2email| $customer2phone| $customer2occupation| $customer2salary|
+                                    $customer1id| $customer1name| $customer1surname| $customer1address| $customer1eircode| $customer1dob| $customer1email| 
+                                    $customer1phone| $customer1occupation| $customer1salary|
+                                    $customer2id| $customer2name| $customer2surname| $customer2address| $customer2eircode| $customer2dob| $customer2email| 
+                                    $customer2phone| $customer2occupation| $customer2salary|
                                     $loan_balance| $term| $loan_amount| $monthly_repayments";
                                 echo "<option value='$allText'>$id</option>";
                             }

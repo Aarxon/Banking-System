@@ -1,5 +1,7 @@
 <html>
     <!--
+        Created by: Ethan Payne (C00309151)
+        Date: March 2026
         This page will take in the information to amend a loan account
         It will update the loan account details in the database and then display a message to the user that the account has been changed
      -->
@@ -19,7 +21,8 @@
 
                 // Update the loan account details in the database
                 // The account ID is used to identify the loan account to be updated
-                $sql = "UPDATE loan_account SET loan_balance = '$_POST[balance]', term = '$_POST[term]', loan_amount = '$_POST[amountpaid]', monthly_repayments = '$_POST[monthlyrepayments]' WHERE account_id = '$_POST[accountid]'";
+                $sql = "UPDATE loan_account SET loan_balance = '$_POST[balance]', term = '$_POST[term]', loan_amount = '$_POST[amountpaid]', monthly_repayments = '$_POST[monthlyrepayments]'
+                WHERE account_id = '$_POST[accountid]'";
 
                 if(!mysqli_query($con, $sql))
                 {

@@ -108,8 +108,7 @@ h1 {
 /* nav bar height taken into account for scroll bars */
 .displaySelected
 {
-	padding: 10px;
-    margin: auto;
+	padding: 40px;
     /* calc is used to make the height of the div fill the remaining space below the navbar */
     /* This removes the scroll bar that would appear if the height of the div was set to 100% */
     height: calc(100% - 80px);
@@ -156,7 +155,7 @@ label
 .customerButton
 {
     height: 40px;
-    width: 120px;
+    width: 200px;
     background-color: rgb(48, 80, 112);
     color: white;
     font-size: 15px;
@@ -167,7 +166,7 @@ label
 .myButton
 {
 	height:40px; /* How tall button is */
-
+    width: 200px; /* How wide button is */
 	/* Adding space between the buttons without changing vertical margins */
 	margin-left: 10px;
 	margin-right: 10px;
@@ -224,9 +223,17 @@ label
 }
 
 /* Styling for the tables used to display reports */
-.reportTable
+.accountReport
 {
     border: 2px solid black;
+    padding: 5px;
+    margin-right: 65%;
+}
+
+/* Underline the table headers and add a border to make them stand out */
+.reportTable th
+{
+    border-bottom: 2px solid black;
     padding: 5px;
 }
 

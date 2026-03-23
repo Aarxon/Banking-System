@@ -1,5 +1,6 @@
 // Ethan Payne
 // C00309151
+//Date: February 2026
 // JavaScript file for loan accounts
 
 // This function is used to toggle the second customer dropdown menu when the multiple customers button is pressed
@@ -242,17 +243,13 @@ function confirmCheckReport()
         const endDate = document.getElementById("endDate").value;
         // Get the current date
         var today = new Date();
-    
         // Store the customer id as a session variable
         var sel = document.getElementById("customer");
         var result;
         result = sel.options[sel.selectedIndex].value;
         var customerDetails = result.split(',');
-
         var customerid = customerDetails[0].trim();
         document.getElementById("customerid").value = customerid;
-        
-        
         // Compare the dates
         if (startDate > endDate) 
         {

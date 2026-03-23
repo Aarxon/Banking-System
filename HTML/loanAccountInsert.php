@@ -1,5 +1,7 @@
 <html>
     <!--
+        Created by: Ethan Payne (C00309151)
+        Date: February 2026
         This page will take the information from openLoanAccount.html.php and insert the loan account into the database
         The user will be informed that the account has been created and will have the option to return
         It will add information to the account table, loan_account table and transactions table
@@ -109,7 +111,8 @@
                     echo "Account ID for new account is: " . $account_id;
 
                     // Insert the data into the loan account table using the account ID from the account table to link the two tables together
-                    $sql = "INSERT into loan_account (account_id, loan_balance, term, loan_amount, monthly_repayments, deleted_flag) VALUES ('$account_id', '$_POST[balance]', $_POST[term], '$loan_amount', '$monthly_repayments', 0)";
+                    $sql = "INSERT into loan_account (account_id, loan_balance, term, loan_amount, monthly_repayments, deleted_flag) 
+                    VALUES ('$account_id', '$_POST[balance]', $_POST[term], '$loan_amount', '$monthly_repayments', 0)";
                     // Run the query and see if it returns a value
                     if (!mysqli_query($con, $sql))
                     {
@@ -120,7 +123,8 @@
 
                     // Insert the initial loan amount into the transactions table as a deposit transaction
                     // A date variable is created to enter the date of the lodgement which is automatically set to today
-                    $sql = "INSERT INTO transactions (account_id, transaction_type, transaction_amount, balance, transaction_date) VALUES ('$account_id', 'Deposit', $loan_amount, '$loan_amount', '$date')";
+                    $sql = "INSERT INTO transactions (account_id, transaction_type, transaction_amount, balance, transaction_date) 
+                    VALUES ('$account_id', 'Deposit', $loan_amount, '$loan_amount', '$date')";
                     // Run the query and see if it returns a value
                     if (!mysqli_query($con, $sql))
                     {

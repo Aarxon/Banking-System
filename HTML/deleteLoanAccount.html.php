@@ -1,4 +1,12 @@
 <html>
+    <!--
+        Created by: Ethan Payne (C00309151)
+        Date: March 2026
+        This is the page where loan accounts are deleted 
+        The user selects the account to be deleted from a dropdown list which is populated with all the current loan accounts in the database
+        When an account is selected, the account details are populated in the fields below to allow the user to confirm that they have selected the correct account to delete
+        The user can then click the delete button to delete the account or return to the previous page if they do not want to delete the account
+     -->
     <head>
         <link rel="stylesheet" href="style.css">
         <script src="LoanAccountJS.js"></script>
@@ -100,8 +108,10 @@
                                 }
                                 
                                     $allText = "$id|
-                                    $customer1id| $customer1name| $customer1surname| $customer1address| $customer1eircode| $customer1dob| $customer1email| $customer1phone| $customer1occupation| $customer1salary|
-                                    $customer2id| $customer2name| $customer2surname| $customer2address| $customer2eircode| $customer2dob| $customer2email| $customer2phone| $customer2occupation| $customer2salary|
+                                    $customer1id| $customer1name| $customer1surname| $customer1address| $customer1eircode| $customer1dob| $customer1email|
+                                    $customer1phone| $customer1occupation| $customer1salary|
+                                    $customer2id| $customer2name| $customer2surname| $customer2address| $customer2eircode| $customer2dob| $customer2email| 
+                                    $customer2phone| $customer2occupation| $customer2salary|
                                     $loan_balance| $term| $loan_amount| $monthly_repayments";
                                 echo "<option value='$allText'>$id</option>";
    
@@ -139,7 +149,8 @@
                 <div class="form-row">
                     <div class="form-group">
                     <label for="term">Term Length</label>
-                    <input name="term" id="term" type="number" required title="Please enter the term length in months minimum length is 24 months and maximum is 120 months" max="120" min="24" disabled/>
+                    <input name="term" id="term" type="number" required title="Please enter the term length in months minimum length is 24 months and maximum is 120 months" 
+                    max="120" min="24" disabled/>
                     </div>
                     <div class="form-group">
                     <label for="monthlyrepayments">Monthly Repayments</label>
