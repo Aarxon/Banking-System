@@ -28,12 +28,12 @@
                             
                             while($row = mysqli_fetch_array($result))
                             {
-                                $id = $row['account_id'];
-                                $firstname = $row['firstname'];
-                                $lastname = $row['lastname'];
+                                $id = $row['customer_id'];
+                                $firstname = $row['name'];
+                                $lastname = $row['surname'];
                                 $allText = "$id - $firstname $lastname";
                                 $_SESSION['customerid'] = $id;
-                                echo "<option value='$allText'>Account ID: $id - $firstname $lastname</option>";
+                                echo "<option value='$allText'>$id - $firstname $lastname</option>";
                             }
 
                             mysqli_close($con);
