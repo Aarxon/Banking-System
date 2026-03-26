@@ -1,0 +1,239 @@
+/* Top navbar style */
+.navbar {
+    background-color: rgb(48, 80, 112);
+    height: 80px;
+    display: flex;
+}
+ 
+/* Navbar links style*/
+.navbar a {
+    text-decoration: none;
+    color: white;
+} 
+
+/* navbar hover style */
+.navbar a:hover {
+    color: rgb(224, 181, 143);
+}
+
+/* Main body style */
+body {
+    background-color: rgb(245, 240, 233);
+    margin: 0;  /* Remove default margin to allow the navbar to sit perfectly in the top left corner and the sidebar to be positioned to the left */
+}
+
+/* Dropdown Button */
+.dropbutton {
+    background-color: rgb(48, 80, 112);
+    width: 160px;
+    height: 80px;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+/* Needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    width: 160px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgb(48, 80, 112);
+    min-width: 160px;
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    width: 160px;
+}
+
+/* Show active link in navbar */
+a.topActive {
+    color: rgb(224, 181, 143);
+    
+}
+
+.dropbutton.topActive {
+    background-color: rgb(17, 34, 80);
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: rgb(17, 34, 80);
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbutton {
+    background-color: rgb(17, 34, 80);
+}
+
+h1 {
+    color: black;
+    font-size: 22px;
+    padding: 20px 40px;
+    border-bottom: 2px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-color: black;
+    border-style: solid;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+}
+
+.displaySelected
+{
+	padding: 10px;
+    margin: auto;
+    /* calc is used to make the height of the div fill the remaining space below the navbar */
+    /* This removes the scroll bar that would appear if the height of the div was set to 100% */
+    height: calc(100% - 80px);
+}
+
+h2
+{
+	text-align: left; /* put in the vertical middle of the form */
+	color: navy;
+}
+
+/* code snip */
+label 
+{
+	display: block;
+	margin-bottom: 5px;	
+}
+
+.form-row 
+{
+  	display: flex;
+	flex-direction: row;
+}
+
+.form-group 
+{
+	padding: 5px;
+    font-size: 22px;
+}
+
+.form-group input 
+{
+  	width: 500px;
+    height: 50px;
+    font-size: 20px;
+}
+
+.customerButton
+{
+    height: 40px;
+    width: 120px;
+    background-color: rgb(48, 80, 112);
+    color: white;
+    font-size: 15px;
+    border: none;
+}
+
+/* The div that holds both buttons */
+.myButton
+{
+	height:40px; /* How tall button is */
+
+	/* Adding space between the buttons without changing vertical margins */
+	margin-left: 10px;
+	margin-right: 10px;
+	/* Color effects and font size for buttons */
+	background-color: aliceblue;
+	font-size: 15px;
+}
+
+.selectBox
+{
+    width: 500px;
+    height: 50px;
+    font-size: 20px;
+}
+
+.hideText
+{
+    visibility: hidden;
+}
+
+/* Styling for under construction signage */
+.underconstruction
+{
+    position: absolute;
+    height: fit-content;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: rgb(17, 34, 80);
+}
+
+.customerInfo
+{
+    background-color: white;
+    border: 2px black solid;
+    border-radius: 5px;
+    padding: 5px;
+    width: 490px;
+    height: 250px;
+    font-size: 20px;
+    white-space: pre-wrap; /* newlines (\n) in text content */
+}
+
+/* Styling for the tables used to display reports */
+.accountReport
+{
+    border: 2px solid black;
+    padding: 5px;
+	margin-right: 65%;
+}
+
+/* Underline the table headers and add a border to make them stand out */
+.reportTable th
+{
+    border-bottom: 2px solid black;
+    padding: 5px;
+}
+
+/* Styling for the headings used in the reports */
+.reportHeadings
+{
+    font-size: 16px;
+    color: navy;
+}
+
+/* A red button suitable for delete operations */
+.dangerButton
+{
+    height: 40px;
+    width: 140px;
+    background-color: rgb(163, 31, 31);
+    color: white;
+    font-size: 15px;
+    border: none;
+}
