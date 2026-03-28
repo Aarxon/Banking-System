@@ -1,0 +1,178 @@
+<!--
+Project: Real Bank
+Description: Example form to demonstrate styling
+Date: 9 February 2026
+
+Add Customer sample form contains:
+•	First name
+•	surname
+•	Address
+•	eircode
+•	date of birth
+•	telephone number
+•	occupation
+•	salary
+•	email address
+•	guarantor's name
+
+Styling provided for:
+•	Date input
+•	Radio buttons
+•	Sliders
+•	Checkboxes
+•	datalist
+•	textarea
+•	select
+
+--> 
+
+ <!DOCTYPE html>
+ <html>
+ <head>
+ 	<title>Form</title>
+
+ 	<link rel="stylesheet" href="form2.css" type="text/css">
+	<script type="text/javascript"src="formScripts.js" defer></script>
+
+</head>
+
+<!--BODY-->
+<body>
+
+<!-- Sample salary/money amount input box -->
+<!-- € <input type="number" min="0.01" step="0.01" max="2000000" value="00.00" /> -->
+
+<!-- This container is for the form/report on the right of the page. Content of the selected menu option-->
+<div class="displaySelected">
+	<form>
+	<div class="form-row">
+
+		<div class="form-group">
+		<label for="first-name">First name</label>
+		<input id="first-name" type="text">
+		</div>
+
+		<div class="form-group">
+		<label for="last-name">Last name</label>
+		<input id="last-name" type="text">
+		</div>
+	</div>
+
+	<div class="form-row">
+
+		<div class="form-group">
+		<label for="location">Location</label>
+		<input id="location" type="text">
+		</div>
+
+		<div class="form-group">
+		<label for="some-input">Some other input</label>
+		<input id="some-input" type="text">
+	</div>
+
+	</div>
+
+	<div class="form-group">
+		<label for="location">Location</label>
+		<input id="location" type="text">
+	</div>
+
+
+
+	<div class="form-group">
+		<label for="location">Location</label>
+		<input id="location" type="text">
+	</div>
+
+	
+
+	<div class="form-row">
+
+		<div class="form-group">
+		<label for="location">Location</label>
+		<input id="location" type="text">
+		</div>
+
+		<div class="form-group">
+		<label for="some-input">Some other input</label>
+		<input id="some-input" type="text">
+		</div>
+	</div>
+
+	</form>
+</div>
+<br>
+<br>
+<div class=displaySelected>
+
+<form>
+<h2>Add Customer Form</h2>
+
+
+		<!-- Adds an input box for First Name -->
+		<div class="inputbox">
+			<label for="Firstname">First Name:</label>
+			<!-- autofocus puts the cursor in this input box -->
+			<input type="text" name="firstname" id="Firstname" autofocus placeholder="John" required="true" title="Please enter your first name." />  <!-- name=  what the variable with the data is called -->
+		</div>
+
+		<!-- Adds an input box for Surname -->
+		<div class="inputbox">
+			<label for="surname">Surname:</label> <!-- label: defines a label for an <input> -->
+			<input type="text" name="surname" id="surname" placeholder="Smith" required title="Please enter your surname."> <!-- id= equals the for= -->
+		</div>
+
+		<!-- Adds an input box for Address -->
+		<div class="inputbox">
+			<label for="address">Address:</label> <!-- label: defines a label for an <input> -->
+			<input type="text" name="address" id="address" placeholder="123 Lane, Bozotown, Carlow, R00XX00" required title="Please enter your full address."> 
+		</div>
+
+		<!-- Adds an input box for Phone -->
+		<div class="inputbox">
+			<label for="phone">Phone:</label> <!-- label: defines a label for an <input> -->
+			<input type="tel" name="phone" id="phone" placeholder="### ####" required title="Please enter your phone number in the format ### ####" pattern="[0-9]{3}[0-9]{4}"> <!-- Validates the phone number: xxx-xxxx or xxx xxxx -->
+		</div>
+
+		<!-- Adds an input box for an email address, that is required -->
+		<div class="inputbox">
+			<label for="email_address">Email address:</label>
+			<input type="email" name="email_address" id="email_address" placeholder="mail@mailbox.com" required title="Please enter your email address." /> 
+		</div>
+
+		<!-- A website address in the correct format -->
+		<div class="inputbox">
+			<label for="email_address">Website address:</label>
+			<input type="url" name="web_address" id="web_address" placeholder="https://example.com" title="Please enter your website address." /> 
+		</div>
+
+		<!-- -A date of birth -->
+		<div class="inputbox">
+			<label for="date_ob">Date of Birth:</label>
+			<input type="date" name="date_ob" id="date_ob" required title="Please enter your date of birth." /> 
+		</div>
+
+
+
+
+
+
+	<!-- Our buttons, Send and Clear form -->
+	<div class="myButton">
+		<!-- "submit" type sends in the variables and their entered/selected values -->
+		<input type="submit" value="Send Form" name="submit"/>
+		<!-- Reset clear all of this form's selections/inputs -->
+		<input type="reset" value="Clear Form" name="reset"/>
+	</div>
+
+</form>
+
+	<!-- displaySelected div -->
+	</div>
+
+
+
+<!-- end Content div -->
+</div> 
+</body>
+</html>
